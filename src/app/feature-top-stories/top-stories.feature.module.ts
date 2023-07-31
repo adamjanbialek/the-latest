@@ -11,7 +11,7 @@ import {TopStoriesRoutingFeatureModule} from "./top-stories-routing.feature.modu
   ],
   imports: [
     CommonModule,
-    TopStoriesRoutingFeatureModule
+    TopStoriesRoutingFeatureModule,
   ],
   exports: []
 })
