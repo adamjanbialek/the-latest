@@ -1,4 +1,16 @@
-<a routerLink="top-stories">Top Stories</a>
-<a >Weather Forecast</a>
-<a >Live Results</a>
-<a >Stocks Info</a>
+<section>
+  <div class="tiles-container" >
+    <div class="present-features" *ngFor="let functionality of functionalitiesList.functionalitiesArray">
+      <a class="tile" *ngIf="functionality.isReady" routerLink="{{functionality.url}}">
+        <img src="{{functionality.imageUrl}}">
+        {{functionality.name}}
+      </a>
+    </div>
+    <div class="coming-features" *ngFor="let functionality of functionalitiesList.functionalitiesArray">
+      <a class="tile soon" *ngIf="!functionality.isReady">
+        <img src="{{functionality.imageUrl}}">
+        {{functionality.name}}
+      </a>
+    </div>
+  </div>
+</section>
