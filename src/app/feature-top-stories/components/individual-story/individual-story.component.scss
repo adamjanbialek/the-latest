@@ -1,0 +1,14 @@
+h1 + .button {
+  margin-top: 10px;
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
+  margin-top: 50px;
+}
+
+.abstract {
+  margin-top: 10px;
+}

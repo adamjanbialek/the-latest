@@ -2,10 +2,14 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {TopStoriesComponent} from "./components/top-stories/top-stories.component";
 import {IndividualStoryComponent} from "./components/individual-story/individual-story.component";
+import {TopStoriesHomeComponent} from "./components/top-stories-home/top-stories-home.component";
 
 const appRoutes: Routes = [
-  {path: '', component: TopStoriesComponent},
-  {path: 'top-stories', component: IndividualStoryComponent},
+  {path: '', component: TopStoriesHomeComponent, children: [
+      {path: '', component: TopStoriesComponent, },
+      {path: ':id', component: IndividualStoryComponent}
+    ]
+  },
 ]
 
 @NgModule({

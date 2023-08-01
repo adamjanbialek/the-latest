@@ -1,1 +1,37 @@
-<p>individual-story works!</p>
+<section>
+  <h1>{{selectedArticle.title}}</h1>
+  <a class="button" href="{{selectedArticle.link}}" target="_blank">Read more</a>
+  <div class="content-container">
+    <div class="article-content">
+      <img src="{{selectedArticle.image}}">
+      <div class="abstract">
+        {{selectedArticle.abstract}}
+      </div>
+    </div>
+
+    <form class="form-container" (ngSubmit)="onSubmit()" #f="ngForm">
+      <label for="username"></label><input id="username" name="username" ngModel required minlength="6" #username="ngModel">
+      <p *ngIf="username.touched && username.invalid">Input a username or click "Suggest username" button below</p>
+      <button type="button" (click)="suggestUsername()">Suggest username</button>
+      <p>Share your thoughts:</p>
+      <textarea name="yourThoughts" [(ngModel)]="yourThoughts" required></textarea>
+      <div ngModelGroup="questions">
+        <label for="did-you-read">Did you read the whole article?</label>
+        <select id="did-you-read" name="didYouRead" [ngModel]="didYouRead">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="no-teen">TLDR</option>
+          <option value="didnt-open">Didn't even opened the link</option>
+        </select>
+        <div>
+          <p>Do you reside in the USA?</p>
+          <label *ngFor="let option of residenceOptions">
+            <input type="radio" name="residence" class="radio-input" [value]="option" [ngModel]="defaultResidence">
+            {{option}}
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="button" [disabled]="!f.valid">Submit</button>
+    </form>
+  </div>
+</section>

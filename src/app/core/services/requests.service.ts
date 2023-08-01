@@ -2,6 +2,7 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {map} from "rxjs";
 import {Article} from "../../feature-top-stories/models/article.model";
+import {UserReaction} from "../../shared/models/user-reaction.model";
 
 @Injectable({
   providedIn: "root"
@@ -9,6 +10,8 @@ import {Article} from "../../feature-top-stories/models/article.model";
 export class RequestsService {
   constructor(private http: HttpClient) {
   }
+
+  firebaseUrl = 'https://ng-complete-guide-5e2dd.firebaseio.com/articles.json';
 
   getRequest(url: string) {
     return this.http.get<{}>(url).pipe(map(
@@ -35,5 +38,9 @@ export class RequestsService {
         return postsArray;
       }
     ))
+  }
+
+  postRequest(article: Article, userReaction: UserReaction) {
+    return this.http.post(this.firebaseUrl, [article, userReaction]);
   }
 }
