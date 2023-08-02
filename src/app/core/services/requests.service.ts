@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 import {map} from "rxjs";
 import {Article} from "../../feature-top-stories/models/article.model";
 import {UserReaction} from "../../shared/models/user-reaction.model";
+import {Content} from "../../shared/models/content.model";
 
 @Injectable({
   providedIn: "root"
@@ -15,32 +16,34 @@ export class RequestsService {
 
   getRequest(url: string) {
     return this.http.get<{}>(url).pipe(map(
-      (res: {[key: string] : {[key: string]: {}}}) => {
-        let postsArray: Article[] = [];
+      (res: {[key: string] : unknown}) => {
+        let articlesArray: Article[] = [];
 
-        for (const articleData in res['results']) {
-          console.log(res);
-          let obj: {[key: string]: string} = res['results'][articleData];
-          let img = '';
-          if(obj['multimedia'] !== null) {
-            let image: {[key: number]: string} = obj['multimedia'][+'1'];
-            for (let key in image) (key === 'url') ? img = image[key] : '';
-          } else {
-            continue;
-          }
+        if(Array.isArray(res['results'])) {
+          for (const resItem in res['results']) {
+            let articleObject: {[key: string]: unknown} = res['results'][resItem];
 
-          let article: Article = {title: obj['title'], abstract: obj['abstract'], link: obj['url'], image: img};
-          if(article.title !== '') {
-            postsArray.push(article);
+            if(articleObject['title'] && articleObject['multimedia'] && Array.isArray(articleObject['multimedia'])) {
+              let img: string = articleObject['multimedia'][+'1']['url'];
+              if(typeof articleObject['title'] === 'string' && typeof articleObject['abstract'] === 'string'
+                && typeof articleObject['url'] === 'string') {
+                let article: Article = {
+                  title: articleObject['title'],
+                  abstract: articleObject['abstract'],
+                  link: articleObject['url'],
+                  image: img};
+                articlesArray.push(article);
+              }
+            }
           }
         }
 
-        return postsArray;
+        return articlesArray;
       }
     ))
   }
 
-  postRequest(article: Article, userReaction: UserReaction) {
-    return this.http.post(this.firebaseUrl, [article, userReaction]);
+  postRequest(content: Content, userReaction: UserReaction) {
+    return this.http.post(this.firebaseUrl, [content, userReaction]);
   }
 }

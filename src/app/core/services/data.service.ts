@@ -6,4 +6,5 @@ import {Injectable} from "@angular/core";
 })
 export class DataService {
   articlesToDisplay: Article[] = [];
+  selectedArticle: Article = {title: '', abstract: '', link: '', image: ''};
 }

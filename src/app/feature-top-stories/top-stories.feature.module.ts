@@ -5,7 +5,6 @@ import {CommonModule} from "@angular/common";
 import {TopStoriesRoutingFeatureModule} from "./top-stories-routing.feature.module";
 import {TopStoriesHomeComponent} from "./components/top-stories-home/top-stories-home.component";
 import {RouterModule} from "@angular/router";
-import {FormsModule} from "@angular/forms";
 import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
@@ -18,7 +17,6 @@ import {SharedModule} from "../shared/shared.module";
     CommonModule,
     TopStoriesRoutingFeatureModule,
     RouterModule,
-    FormsModule,
     SharedModule
   ],
   exports: []
