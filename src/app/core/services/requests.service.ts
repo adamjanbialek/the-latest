@@ -12,9 +12,15 @@ export class RequestsService {
   constructor(private http: HttpClient) {
   }
 
-  firebaseUrl = 'https://ng-complete-guide-5e2dd.firebaseio.com/articles.json';
+  firebaseUrl = 'https://test-project-f9414-default-rtdb.firebaseio.com/articles.json';
 
-  getRequest(url: string) {
+  getFromFirebase() {
+    return this.http.get(this.firebaseUrl).subscribe({
+      next: res => console.log(res),
+    })
+  }
+
+  getArticleData(url: string) {
     return this.http.get<{}>(url).pipe(map(
       (res: {[key: string] : unknown}) => {
         let articlesArray: Article[] = [];

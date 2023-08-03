@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./individual-story.component.scss']
 })
 export class IndividualStoryComponent implements OnInit {
-  constructor(public dataService: DataService,
+  constructor(private dataService: DataService,
               private activatedRoute: ActivatedRoute, private router: Router) {
   }
 

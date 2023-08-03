@@ -1,13 +1,14 @@
 * {
-  font-family: "Lexend Deca";
+  font-family: "Lexend Deca", sans-serif;
 }
 
 body {
-  background-color: #f5f5fb;
+  background-color: $grey-primary;
 }
 
 main {
   margin: 120px 0;
+  padding-inline: 60px;
 }
 
 section {
@@ -15,10 +16,12 @@ section {
   margin-inline: auto;
 }
 
-h1 {
-  font-size: 60px;
-}
-
 a {
   display: block;
+}
+
+@media (max-width: $_small-tablet) {
+  main {
+    padding-inline: 20px;
+  }
 }

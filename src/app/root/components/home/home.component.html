@@ -1,15 +1,15 @@
 <section>
   <div class="tiles-container" >
-    <div class="present-features" *ngFor="let functionality of functionalitiesList.functionalitiesArray">
-      <a class="tile" *ngIf="functionality.isReady" routerLink="{{functionality.url}}">
+    <div class="present-features">
+      <a class="tile" *ngFor="let functionality of functionalitiesReady" routerLink="{{functionality.url}}">
         <img src="{{functionality.imageUrl}}">
-        {{functionality.name}}
+        <p class="tile-title">{{functionality.name}}</p>
       </a>
     </div>
-    <div class="coming-features" *ngFor="let functionality of functionalitiesList.functionalitiesArray">
-      <a class="tile soon" *ngIf="!functionality.isReady">
+    <div class="coming-features">
+      <a class="tile soon" *ngFor="let functionality of functionalitiesComingSoon">
         <img src="{{functionality.imageUrl}}">
-        {{functionality.name}}
+        <p class="tile-title">{{functionality.name}} <br/> Coming soon</p>
       </a>
     </div>
   </div>

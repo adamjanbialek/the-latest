@@ -9,11 +9,11 @@ import {Router} from "@angular/router";
   styleUrls: ['./top-stories.component.scss']
 })
 export class TopStoriesComponent {
-  constructor(private requestsService: RequestsService, public dataService: DataService, public router: Router) {
+  constructor(private requestsService: RequestsService, public dataService: DataService, private router: Router) {
   }
 
   getArticles() {
-    if(this.dataService.articlesToDisplay.length === 0) this.requestsService.getRequest('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=xiE45x0Ko9i4PoeHRqEU9rGDYWi4AGjI').subscribe({
+    if(this.dataService.articlesToDisplay.length === 0) this.requestsService.getArticleData('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=xiE45x0Ko9i4PoeHRqEU9rGDYWi4AGjI').subscribe({
       next: res => this.dataService.articlesToDisplay = res
     });
   }

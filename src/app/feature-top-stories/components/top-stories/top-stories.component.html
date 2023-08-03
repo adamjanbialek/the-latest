@@ -1,9 +1,9 @@
 <section>
   <h1>Articles</h1>
   <div class="articles-container">
-    <a *ngFor="let article of dataService.articlesToDisplay; let i = index" (click)="toArticle(i)">
+    <a class="tile" *ngFor="let article of dataService.articlesToDisplay; let i = index" (click)="toArticle(i)">
       <img src="{{article.image}}">
-      <h2>{{article.title}}</h2>
+      <h2 class="tile-title">{{article.title}}</h2>
     </a>
   </div>
 </section>

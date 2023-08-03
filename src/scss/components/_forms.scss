@@ -11,3 +11,9 @@ form {
     width: 100%;
   }
 }
+
+@media (max-width: $_large-tablet) {
+  form {
+    max-width: 600px;
+  }
+}

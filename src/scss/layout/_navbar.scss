@@ -1,0 +1,31 @@
+nav {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  top: 0;
+  background: red;
+  color: $white-primary;
+
+  .nav-content {
+    padding: 15px 60px;
+    margin-inline: auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    font-size: 25px;
+  }
+}
+
+.the-latest-link {
+  text-decoration: unset;
+  color: $white-primary;
+}
+
+@media (max-width: $_small-tablet) {
+  nav {
+    .nav-content {
+      padding-inline: 20px;
+    }
+  }
+}

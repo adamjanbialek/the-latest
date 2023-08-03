@@ -1,3 +1,4 @@
+<h2>What's your opinion?</h2>
 <form class="form-container" (ngSubmit)="onSubmit()" #f="ngForm">
   <label for="username"></label><input id="username" name="username" ngModel required minlength="6" #username="ngModel">
   <p *ngIf="username.touched && username.invalid">Input a username or click "Suggest username" button below</p>

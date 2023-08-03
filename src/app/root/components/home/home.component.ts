@@ -1,12 +1,25 @@
-import { Component } from '@angular/core';
-import {FunctionalitiesListService} from "../../../core/services/functionalities-list.service";
+import {Component, OnInit} from '@angular/core';
+import {FunctionalitiesListService, Functionality} from "../../../core/services/functionalities-list.service";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  constructor(public functionalitiesList: FunctionalitiesListService) {
+export class HomeComponent implements OnInit {
+  constructor(private functionalitiesList: FunctionalitiesListService) {
+  }
+
+  functionalitiesReady: Functionality[] = [];
+  functionalitiesComingSoon: Functionality[] = [];
+
+  ngOnInit() {
+    for (const functionality of this.functionalitiesList.functionalitiesArray) {
+      if(functionality.isReady) {
+        this.functionalitiesReady.push(functionality);
+      } else {
+        this.functionalitiesComingSoon.push(functionality);
+      }
+    }
   }
 }

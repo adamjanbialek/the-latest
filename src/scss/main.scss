@@ -1,5 +1,8 @@
-@import "base/reset";
 @import "abstracts/variables";
+@import "base/reset";
 @import "base/globals";
+@import "base/typography";
 @import "components/buttons";
 @import "components/forms";
+@import "layout/navbar";
+@import "pages/home";

@@ -1,3 +1,29 @@
+Aplikacja jest podzielona na moduły - App, AppRouting, Core, Share, FeatureTopStories. W Core Module przechowywane są dane. 
+W DataService przechowywane jest wynik requestu GET. Komponenty sprawdzają wartość zawartego tam arrayu i wywołują request 
+tylko wtedy, kiedy array w DataService jest pusty.
+
+Kiedy przejdziemy z komponentu TopStories na IndividualStories otwiera się strona z podstawowymi danymi na temat artykułu. 
+Mamy możliwość wypełnienia formularza UserReactionsForm, który po kliknięciu wysyła się do bazy w Firebase.
+
+Zaraz po wysłaniu danych, uruchamia się request GET pobierający wszystkie posty z bazy i printujący je w konsoli. Wyobrażam sobie, 
+że można byłoby stworzyć moduł zawierające wszystkie reakcje użytkownika. Na tą chwilę to printowanie tych danych nie spełnia żadnej roli. 
+
+Na stronie tytułowej mamy 4 funkcjonalności, jedna oczywiście działa.
+Jest zawarta w module TopStoriesFeatureModule, który ma zaimplementowany lazy loading. Nie zdążyłem wdrożyć mechanizmu autentyfikacji 
+użytkowanika, co za tym idzie nie zaimplementowałem CanActivate, CanActivateChild, czy CanDeactivate, a także AutoLoginu, AutoLogoffu, 
+co zrobiłbym na podstawie tokena. W Firebase też jest oczywiście umożliwiana zapisywania i odczytywania tylko przez zalogowanych 
+użytkowników. Wykorzystałbym w tym celu Interceptory, gdzie dodałbym header requestu z odpowiednią wartością.
+
+Nie korzystałem z subskrypcji i odsubskrybowania, bo trzy observables, które mam w swoim projekcie to observablese związane z requestami http, 
+które po pobraniu danych, bądź wyrzucaniu errora, czyli po wypełnieniu(complete) same się odsubskrybowują.
+
+W projekcie wykorzystałem strukture scssu 7-1, co prawda subfolderów jest tylko 5, ale to wynika ze skali projektu. Korzystałem ze zmiennych 
+scssowych, jeśli chodzi o breakpointy i kolory- zadbałem o responsywność w przedziale okolo 320 do 1920.
+
+Oczywiście korzystałem z GITa, stworzyłem 2 branche, jeden master, a drugi który służył do rozwijania jednej z funkcjonalności aplikacji. Po 
+zakończeniu pracy nad nią zmergeowałem go z powrotem do mastera.
+
+
 # TheLatest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.

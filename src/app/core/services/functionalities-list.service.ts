@@ -19,7 +19,7 @@ export class FunctionalitiesListService {
       isReady: true
     },
     {
-      name: 'Forecast',
+      name: 'Weather Forecast',
       imageUrl: 'assets/weather.jpg',
       isReady: false
     },
