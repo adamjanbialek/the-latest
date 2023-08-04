@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {DataService} from "../../../core/services/data.service";
 import {Article} from "../../models/article.model";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -6,7 +6,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-individual-story',
   templateUrl: './individual-story.component.html',
-  styleUrls: ['./individual-story.component.scss']
+  styleUrls: ['./individual-story.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IndividualStoryComponent implements OnInit {
   constructor(private dataService: DataService,

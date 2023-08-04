@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {UserReaction} from "../../models/user-reaction.model";
 import {NgForm} from "@angular/forms";
 import {DataService} from "../../../core/services/data.service";
@@ -7,7 +7,8 @@ import {RequestsService} from "../../../core/services/requests.service";
 @Component({
   selector: 'app-user-reactions-form',
   templateUrl: './user-reactions-form.component.html',
-  styleUrls: ['./user-reactions-form.component.scss']
+  styleUrls: ['./user-reactions-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserReactionsFormComponent {
   constructor(public dataService: DataService, private requestsService: RequestsService) {
