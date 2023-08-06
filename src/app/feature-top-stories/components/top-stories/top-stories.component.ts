@@ -22,6 +22,7 @@ export class TopStoriesComponent {
     subscribe({
       next: res => {
         this.loadedContent = this.dataService.loadedContent = res;
+      }, complete: () => {
         this.cdr.detectChanges();
       }
     });

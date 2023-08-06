@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DataService} from "../../../core/services/data.service";
 import {ActivatedRoute} from "@angular/router";
 import {IContent} from "../../../shared/models/icontent.model";
@@ -12,7 +12,7 @@ import {RequestsService} from "../../../core/services/requests.service";
 })
 export class IndividualStoryComponent implements OnInit {
   constructor(private dataService: DataService,
-              private requestsService: RequestsService, private activatedRoute: ActivatedRoute) {
+              private requestsService: RequestsService, private activatedRoute: ActivatedRoute, private cdr: ChangeDetectorRef) {
   }
 
   loadedContent!: IContent;
@@ -28,8 +28,9 @@ export class IndividualStoryComponent implements OnInit {
       this.dataService.getContentIfArrayIsEmpty().subscribe({
         next: res => {
           this.dataService.loadedContent = res;
+        }, complete: () => {
           this.loadedContent = this.dataService.loadedContent[this.id];
-          this.setSelectedItem()
+          this.setSelectedItem();
         }
       });
     }
@@ -37,6 +38,7 @@ export class IndividualStoryComponent implements OnInit {
 
   displayContentItem() {
     this.loadedContent = this.dataService.loadedContent[this.id];
+    this.setSelectedItem();
   }
 
   setSelectedItem() {
