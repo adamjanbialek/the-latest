@@ -42,7 +42,7 @@ export class UserReactionsFormComponent {
     this.userReaction.yourThoughts = this.reactionForm.value.yourThoughts;
     this.userReaction.didYouRead = this.reactionForm.value.questions.didYouRead;
     this.userReaction.residence = this.reactionForm.value.questions.residence;
-    this.requestsService.postRequest(this.dataService.selectedArticle, this.userReaction).subscribe({
+    this.requestsService.postRequest(this.dataService.selectedContentItem, this.userReaction).subscribe({
       complete: () => {
         this.requestsService.getFromFirebase();
       }

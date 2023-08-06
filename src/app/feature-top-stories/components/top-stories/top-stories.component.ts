@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
-import {RequestsService} from "../../../core/services/requests.service";
 import {DataService} from "../../../core/services/data.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {IContent} from "../../../shared/models/icontent.model";
 
 @Component({
   selector: 'app-top-stories',
@@ -10,23 +10,28 @@ import {Router} from "@angular/router";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopStoriesComponent {
-  constructor(private cdr: ChangeDetectorRef, private requestsService: RequestsService, public dataService: DataService, private router: Router) {
+  constructor(public dataService: DataService, private cdr: ChangeDetectorRef,
+              private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
-  getArticles() {
-    if(this.dataService.articlesToDisplay.length === 0) this.requestsService.getArticleData('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=xiE45x0Ko9i4PoeHRqEU9rGDYWi4AGjI').subscribe({
+  type = this.activatedRoute.snapshot.paramMap.get('type')!;
+  loadedContent!: IContent[];
+
+  getContent() {
+    if(this.dataService.loadedContent.length === 0) this.dataService.getContentIfArrayIsEmpty().
+    subscribe({
       next: res => {
-        this.dataService.articlesToDisplay = res;
+        this.loadedContent = this.dataService.loadedContent = res;
         this.cdr.detectChanges();
       }
     });
   }
 
   ngOnInit() {
-    this.getArticles();
+    this.getContent();
   }
 
-  toArticle(i: number) {
-    this.router.navigate(['/top-stories', i]);
+  toContentItem(i: number) {
+    this.router.navigate(['/content/', this.type, i]);
   }
 }

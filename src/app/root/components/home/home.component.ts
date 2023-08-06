@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FunctionalitiesListService, Functionality} from "../../../core/services/functionalities-list.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -8,19 +9,18 @@ import {FunctionalitiesListService, Functionality} from "../../../core/services/
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
-  constructor(private functionalitiesList: FunctionalitiesListService) {
+  constructor(private functionalities: FunctionalitiesListService, private router: Router) {
   }
 
   functionalitiesReady: Functionality[] = [];
   functionalitiesComingSoon: Functionality[] = [];
 
   ngOnInit() {
-    for (const functionality of this.functionalitiesList.functionalitiesArray) {
-      if(functionality.isReady) {
-        this.functionalitiesReady.push(functionality);
-      } else {
-        this.functionalitiesComingSoon.push(functionality);
-      }
-    }
+    this.functionalitiesReady = this.functionalities.readyFunctionalities;
+    this.functionalitiesComingSoon = this.functionalities.comingSoonFunctionalities;
+  }
+
+  goToFunctionality(url: string) {
+    this.router.navigate(['content',url]);
   }
 }

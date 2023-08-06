@@ -1,9 +1,9 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {map} from "rxjs";
+import {map, Observable} from "rxjs";
 import {Article} from "../../feature-top-stories/models/article.model";
 import {UserReaction} from "../../shared/models/user-reaction.model";
-import {Content} from "../../shared/models/content.model";
+import {IContent} from "../../shared/models/icontent.model";
 
 @Injectable({
   providedIn: "root"
@@ -20,36 +20,45 @@ export class RequestsService {
     })
   }
 
-  getArticleData(url: string) {
-    return this.http.get<{}>(url).pipe(map(
-      (res: {[key: string] : unknown}) => {
-        let articlesArray: Article[] = [];
+  private transformResponse(res: {[key: string]: unknown}): Article[] {
+    let articlesArray: Article[] = [];
 
-        if(Array.isArray(res['results'])) {
-          for (const resItem in res['results']) {
-            let articleObject: {[key: string]: unknown} = res['results'][resItem];
+    if (Array.isArray(res['results'])) {
+      for (const resItem in res['results']) {
+        let articleObject: {[key: string]: unknown} = res['results'][resItem];
 
-            if(articleObject['title'] && articleObject['multimedia'] && Array.isArray(articleObject['multimedia'])) {
-              let img: string = articleObject['multimedia'][+'1']['url'];
-              if(typeof articleObject['title'] === 'string' && typeof articleObject['abstract'] === 'string'
-                && typeof articleObject['url'] === 'string') {
-                let article: Article = {
-                  title: articleObject['title'],
-                  abstract: articleObject['abstract'],
-                  link: articleObject['url'],
-                  image: img};
-                articlesArray.push(article);
-              }
-            }
+        if (
+          articleObject['title'] &&
+          articleObject['multimedia'] &&
+          Array.isArray(articleObject['multimedia'])
+        ) {
+          let img: string = articleObject['multimedia'][+'1']['url'];
+          if (
+            typeof articleObject['title'] === 'string' &&
+            typeof articleObject['abstract'] === 'string' &&
+            typeof articleObject['url'] === 'string'
+          ) {
+            let article: Article = {
+              title: articleObject['title'],
+              abstract: articleObject['abstract'],
+              link: articleObject['url'],
+              image: img,
+            };
+            articlesArray.push(article);
           }
         }
-
-        return articlesArray;
       }
-    ))
+    }
+
+    return articlesArray;
   }
 
-  postRequest(content: Content, userReaction: UserReaction) {
+  getContentData(url: string): Observable<any> {
+    return this.http.get<{}>(url).pipe(map(this.transformResponse));
+  }
+
+
+  postRequest(content: IContent, userReaction: UserReaction) {
     return this.http.post(this.firebaseUrl, [content, userReaction]);
   }
 }

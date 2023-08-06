@@ -1,4 +1,6 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit,} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {FunctionalitiesListService} from "../../../core/services/functionalities-list.service";
 
 @Component({
   selector: 'app-top-stories-home',
@@ -6,6 +8,12 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   styleUrls: ['./top-stories-home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopStoriesHomeComponent {
+export class TopStoriesHomeComponent implements OnInit{
+  constructor(private activatedRoute: ActivatedRoute, private functionalities: FunctionalitiesListService) {
+  }
+
+  ngOnInit() {
+    this.functionalities.selectedFunctionality = this.activatedRoute.snapshot.paramMap.get('type')!;
+  }
 
 }

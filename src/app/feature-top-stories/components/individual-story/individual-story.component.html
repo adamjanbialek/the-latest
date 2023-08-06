@@ -1,12 +1,12 @@
 <section>
-  <h1>{{selectedArticle.title}}</h1>
-  <a class="button" href="{{selectedArticle.link}}" target="_blank">Read more</a>
+  <h1>{{loadedContent.title}}</h1>
+  <a class="button" href="{{loadedContent.link}}" target="_blank">Read more</a>
   <div class="content-container">
     <div class="article-content">
       <div class="abstract">
-        {{selectedArticle.abstract}}
+        {{loadedContent.abstract}}
       </div>
-      <img src="{{selectedArticle.image}}">
+      <img src="{{loadedContent.image}}">
     </div>
 
     <app-user-reactions-form></app-user-reactions-form>

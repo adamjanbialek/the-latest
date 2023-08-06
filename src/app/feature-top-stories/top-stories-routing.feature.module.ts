@@ -7,7 +7,7 @@ import {TopStoriesHomeComponent} from "./components/top-stories-home/top-stories
 const appRoutes: Routes = [
   {path: '', component: TopStoriesHomeComponent, children: [
       {path: '', component: TopStoriesComponent, },
-      {path: ':id', component: IndividualStoryComponent}
+      {path: ':id', component: IndividualStoryComponent }
     ]
   },
 ]

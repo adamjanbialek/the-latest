@@ -1,7 +1,8 @@
 <section>
+  <div ></div>
   <div class="tiles-container" >
     <div class="present-features">
-      <a class="tile" *ngFor="let functionality of functionalitiesReady" routerLink="{{functionality.url}}">
+      <a class="tile" *ngFor="let functionality of functionalitiesReady" (click)="goToFunctionality(functionality.url)">
         <img src="{{functionality.imageUrl}}">
         <p class="tile-title">{{functionality.name}}</p>
       </a>

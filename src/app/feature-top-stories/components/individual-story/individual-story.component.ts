@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {DataService} from "../../../core/services/data.service";
-import {Article} from "../../models/article.model";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
+import {IContent} from "../../../shared/models/icontent.model";
+import {RequestsService} from "../../../core/services/requests.service";
 
 @Component({
   selector: 'app-individual-story',
@@ -11,28 +12,34 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class IndividualStoryComponent implements OnInit {
   constructor(private dataService: DataService,
-              private activatedRoute: ActivatedRoute, private router: Router) {
+              private requestsService: RequestsService, private activatedRoute: ActivatedRoute) {
   }
 
-  selectedArticle: Article = {title: '', abstract: '', link: '', image: ''};
+  loadedContent!: IContent;
+  id = this.activatedRoute.snapshot.params['id'];
 
   ngOnInit() {
-    this.areArticlesLoaded();
-    this.getArticle();
-    this.passOnTheArticle();
+    this.isContentLoaded();
+    this.displayContentItem();
+    this.setSelectedItem();
   }
 
-  areArticlesLoaded() {
-    if(this.dataService.articlesToDisplay.length === 0) {
-      this.router.navigate(['top-stories']);
+  isContentLoaded() {
+    if(this.dataService.loadedContent.length === 0) {
+      this.dataService.getContentIfArrayIsEmpty().subscribe({
+        next: res => {
+          this.dataService.loadedContent = res;
+          this.loadedContent = this.dataService.loadedContent[this.id];
+        }
+      });
     }
   }
 
-  getArticle() {
-    this.selectedArticle = this.dataService.articlesToDisplay[this.activatedRoute.snapshot.params['id']];
+  displayContentItem() {
+    this.loadedContent = this.dataService.loadedContent[this.id];
   }
 
-  passOnTheArticle() {
-    this.dataService.selectedArticle = this.selectedArticle;
+  setSelectedItem() {
+    this.dataService.selectedContentItem = this.loadedContent;
   }
 }

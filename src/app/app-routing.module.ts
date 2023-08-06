@@ -4,7 +4,7 @@ import {HomeComponent} from "./root/components/home/home.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'top-stories', loadChildren: () => import('./feature-top-stories/top-stories.feature.module')
+  {path: 'content/:type', loadChildren: () => import('./feature-top-stories/top-stories.feature.module')
       .then(m => m.TopStoriesFeatureModule)
   },
 ]
