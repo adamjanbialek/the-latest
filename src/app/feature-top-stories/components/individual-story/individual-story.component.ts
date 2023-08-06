@@ -21,7 +21,6 @@ export class IndividualStoryComponent implements OnInit {
   ngOnInit() {
     this.isContentLoaded();
     this.displayContentItem();
-    this.setSelectedItem();
   }
 
   isContentLoaded() {
@@ -30,6 +29,7 @@ export class IndividualStoryComponent implements OnInit {
         next: res => {
           this.dataService.loadedContent = res;
           this.loadedContent = this.dataService.loadedContent[this.id];
+          this.setSelectedItem()
         }
       });
     }
