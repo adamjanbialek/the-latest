@@ -6,6 +6,7 @@ import {TopStoriesRoutingFeatureModule} from "./top-stories-routing.feature.modu
 import {TopStoriesHomeComponent} from "./components/top-stories-home/top-stories-home.component";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
+import {CoreModule} from "../core/core.module";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {SharedModule} from "../shared/shared.module";
     CommonModule,
     TopStoriesRoutingFeatureModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
   exports: []
 })

@@ -1,5 +1,5 @@
 <section>
-  <h1>{{type.toUpperCase().slice(0,1) + type.slice(1)}}</h1>
+  <h1>{{type | capitalize}}</h1>
   <div class="articles-container">
     <a class="tile" *ngFor="let contentItem of dataService.loadedContent; let i = index" (click)="toContentItem(i)">
       <img src="{{contentItem.image}}">

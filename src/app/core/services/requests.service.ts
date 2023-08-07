@@ -20,7 +20,7 @@ export class RequestsService {
     })
   }
 
-  private transformResponse(res: {[key: string]: unknown}): Article[] {
+  private getArticles(res: {[key: string]: unknown}): Article[] {
     let articlesArray: Article[] = [];
 
     if (Array.isArray(res['results'])) {
@@ -54,7 +54,7 @@ export class RequestsService {
   }
 
   getContentData(url: string): Observable<any> {
-    return this.http.get<{}>(url).pipe(map(this.transformResponse));
+    return this.http.get<{}>(url).pipe(map(this.getArticles));
   }
 
 
