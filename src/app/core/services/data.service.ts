@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {IContent} from "../../shared/models/icontent.model";
 import {RequestsService} from "./requests.service";
 import {FunctionalitiesListService} from "./functionalities-list.service";
+import {Observable, shareReplay, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +12,27 @@ export class DataService {
               private functionalities: FunctionalitiesListService) {
   }
 
-  loadedContent: IContent[] = [];
-  contentTypes: IContent[] = [];
-  selectedContentItem: IContent = {title: '', abstract: '', link: '', image: ''};
+  isLoaded: boolean = false;
+  loaded$!: Observable<IContent[]>;
+
+  passLoadedData() {
+    if(!this.isLoaded) {
+      return this.getContentIfArrayIsEmpty();
+    } else {
+      return this.loaded$;
+    }
+  }
 
   getContentIfArrayIsEmpty() {
-    return this.requestsService.
-    getContentData(this.functionalities.selectFunctionality(this.functionalities.selectedFunctionality).dataUrl!);
+    return this.loaded$ = this.requestsService.
+    getContentData(
+      this.functionalities.selectFunctionality(this.functionalities.selectedFunctionality).dataUrl!
+    ).
+    pipe(
+      shareReplay(1),
+      tap(res => {
+        this.isLoaded = true;
+      })
+    );
   }
 }

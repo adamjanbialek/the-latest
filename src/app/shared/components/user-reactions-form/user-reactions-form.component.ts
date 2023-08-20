@@ -1,8 +1,9 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
 import {UserReaction} from "../../models/user-reaction.model";
 import {NgForm} from "@angular/forms";
 import {DataService} from "../../../core/services/data.service";
 import {RequestsService} from "../../../core/services/requests.service";
+import {IContent} from "../../models/icontent.model";
 
 @Component({
   selector: 'app-user-reactions-form',
@@ -14,14 +15,15 @@ export class UserReactionsFormComponent {
   constructor(public dataService: DataService, private requestsService: RequestsService) {
   }
 
+  @ViewChild('f') reactionForm!: NgForm;
+  @Input() selectedContentItem!: IContent;
+
   userReaction: UserReaction = {
     username: '',
     yourThoughts: '',
     didYouRead: '',
     residence: '',
   }
-
-  @ViewChild('f') reactionForm!: NgForm;
 
   suggestUsername() {
     this.reactionForm.form.patchValue({
@@ -42,7 +44,7 @@ export class UserReactionsFormComponent {
     this.userReaction.yourThoughts = this.reactionForm.value.yourThoughts;
     this.userReaction.didYouRead = this.reactionForm.value.questions.didYouRead;
     this.userReaction.residence = this.reactionForm.value.questions.residence;
-    this.requestsService.postRequest(this.dataService.selectedContentItem, this.userReaction).subscribe({
+    this.requestsService.postRequest(this.selectedContentItem, this.userReaction).subscribe({
       complete: () => {
         this.requestsService.getFromFirebase();
       }

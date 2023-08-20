@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {DataService} from "../../../core/services/data.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IContent} from "../../../shared/models/icontent.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-top-stories',
@@ -9,27 +10,15 @@ import {IContent} from "../../../shared/models/icontent.model";
   styleUrls: ['./top-stories.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopStoriesComponent {
-  constructor(public dataService: DataService, private cdr: ChangeDetectorRef,
-              private router: Router, private activatedRoute: ActivatedRoute) {
+export class TopStoriesComponent implements OnInit {
+  constructor(public dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   type = this.activatedRoute.snapshot.paramMap.get('type')!;
-  loadedContent!: IContent[];
-
-  getContent() {
-    if(this.dataService.loadedContent.length === 0) this.dataService.getContentIfArrayIsEmpty().
-    subscribe({
-      next: res => {
-        this.loadedContent = this.dataService.loadedContent = res;
-      }, complete: () => {
-        this.cdr.detectChanges();
-      }
-    });
-  }
+  loaded$!: Observable<IContent[]>;
 
   ngOnInit() {
-    this.getContent();
+    this.loaded$ = this.dataService.passLoadedData();
   }
 
   toContentItem(i: number) {

@@ -1,14 +1,14 @@
-<section>
-  <h1>{{loadedContent.title}}</h1>
-  <a class="button" href="{{loadedContent.link}}" target="_blank">Read more</a>
+<section *ngIf="(loaded$ | async) as loaded">
+  <h1>{{loaded[id].title}}</h1>
+  <a class="button" href="{{loaded[id].link}}" target="_blank">Read more</a>
   <div class="content-container">
     <div class="article-content">
       <div class="abstract">
-        {{loadedContent.abstract}}
+        {{loaded[id].abstract}}
       </div>
-      <img src="{{loadedContent.image}}">
+      <img src="{{loaded[id].image}}">
     </div>
 
-    <app-user-reactions-form></app-user-reactions-form>
+    <app-user-reactions-form [selectedContentItem]="loaded[id]"></app-user-reactions-form>
   </div>
 </section>

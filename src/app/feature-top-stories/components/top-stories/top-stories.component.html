@@ -1,7 +1,7 @@
 <section>
   <h1>{{type | capitalize}}</h1>
-  <div class="articles-container">
-    <a class="tile" *ngFor="let contentItem of dataService.loadedContent; let i = index" (click)="toContentItem(i)">
+  <div class="articles-container" *ngIf="(loaded$ | async) as loaded">
+    <a class="tile" *ngFor="let contentItem of loaded; let i = index" (click)="toContentItem(i)">
       <img src="{{contentItem.image}}">
       <h2 class="tile-title">{{contentItem.title}}</h2>
     </a>
