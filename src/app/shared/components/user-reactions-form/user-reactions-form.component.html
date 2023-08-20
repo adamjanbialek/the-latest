@@ -8,10 +8,7 @@
   <div ngModelGroup="questions">
     <label for="did-you-read">Did you read the whole article?</label>
     <select id="did-you-read" name="didYouRead" [ngModel]="didYouRead">
-      <option value="yes">Yes</option>
-      <option value="no">No</option>
-      <option value="no-teen">TLDR</option>
-      <option value="didnt-open">Didn't even opened the link</option>
+      <option *ngFor="let key of didYouReadOptions; let i = index" value="{{didYouReadOptions[i][0]}}">{{didYouReadOptions[i][1]}}</option>
     </select>
     <div>
       <p>Do you reside in the USA?</p>
