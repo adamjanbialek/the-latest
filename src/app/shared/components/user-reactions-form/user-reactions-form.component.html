@@ -2,13 +2,13 @@
 <form class="form-container" (ngSubmit)="onSubmit()" #f="ngForm">
   <label for="username"></label><input id="username" name="username" ngModel required minlength="6" #username="ngModel">
   <p *ngIf="username.touched && username.invalid">Input a username or click "Suggest username" button below</p>
-  <button type="button" (click)="suggestUsername()">Suggest username</button>
+  <button type="button button--default" (click)="suggestUsername()">Suggest username</button>
   <p>Share your thoughts:</p>
   <textarea name="yourThoughts" [(ngModel)]="yourThoughts" required></textarea>
   <div ngModelGroup="questions">
     <label for="did-you-read">Did you read the whole article?</label>
-    <select id="did-you-read" name="didYouRead" [ngModel]="didYouRead">
-      <option *ngFor="let key of didYouReadOptions; let i = index" value="{{didYouReadOptions[i][0]}}">{{didYouReadOptions[i][1]}}</option>
+    <select id="did-you-read" name="didYouRead" [ngModel]="didYouReadOptionsDefaultAnswer">
+      <option *ngFor="let option of didYouReadOptionsKeys; let i = index" [value]="option">{{didYouReadOptionsValues[i]}}</option>
     </select>
     <div>
       <p>Do you reside in the USA?</p>

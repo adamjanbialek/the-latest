@@ -7,7 +7,8 @@ body {
 }
 
 main {
-  margin: 120px 0;
+  position: relative;
+  margin: 120px auto;
   padding-inline: 60px;
 }
 
@@ -18,6 +19,10 @@ section {
 
 a {
   display: block;
+}
+
+mat-spinner {
+  margin-inline: auto;
 }
 
 @media (max-width: $_small-tablet) {

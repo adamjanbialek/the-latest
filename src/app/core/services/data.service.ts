@@ -36,15 +36,3 @@ export class DataService {
     );
   }
 }
-
-export const UsernameDefault = 'anonymous';
-export const DidYouReadDefault = 'no';
-export const DidYouReadOptions: string[][] = [
-  ['yes', 'Yes'],
-  ['no', 'No'],
-  ['tldr', 'TLDR'],
-  ['noOpen', 'Didn\'t even opened the link'],
-];
-export const ResidenceDefault = 'no';
-export const ResidenceOptions = ['yes', 'no'];
-export const YourThoughtsDefault = '';

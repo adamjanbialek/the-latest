@@ -1,5 +1,5 @@
 Aplikacja jest podzielona na moduły - App, AppRouting, Core, Share, FeatureTopStories. W Core Module przechowywane są dane. 
-W DataService przechowywane jest wynik requestu GET. Komponenty sprawdzają wartość zawartego tam arrayu i wywołują request 
+W DataService przechowywany jest wynik GET requestu. Komponenty sprawdzają wartość zawartego tam arrayu i wywołują request 
 tylko wtedy, kiedy array w DataService jest pusty.
 
 Kiedy przejdziemy z komponentu TopStories na IndividualStories otwiera się strona z podstawowymi danymi na temat artykułu. 

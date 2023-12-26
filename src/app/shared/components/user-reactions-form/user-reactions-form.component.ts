@@ -1,8 +1,16 @@
 import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {DataService, UsernameDefault, DidYouReadDefault, ResidenceDefault, ResidenceOptions, YourThoughtsDefault, DidYouReadOptions } from "../../../core/services/data.service";
+
 import {RequestsService} from "../../../core/services/requests.service";
 import {IContent} from "../../models/icontent.model";
+import {
+  DidYouReadOptions,
+  DidYouReadOptionsDefaultAnswer,
+  ResidenceDefault, ResidenceOptions,
+  UsernameDefault,
+  YourThoughtsDefault
+} from "../../data/variables";
+import {DataService} from "../../../core/services/data.service";
 
 @Component({
   selector: 'app-user-reactions-form',
@@ -17,8 +25,10 @@ export class UserReactionsFormComponent {
   @ViewChild('f') reactionForm!: NgForm;
   @Input() selectedContentItem!: IContent;
 
-  didYouRead = DidYouReadDefault;
   didYouReadOptions = DidYouReadOptions;
+  didYouReadOptionsDefaultAnswer = DidYouReadOptionsDefaultAnswer;
+  didYouReadOptionsKeys = Object.keys(DidYouReadOptions);
+  didYouReadOptionsValues = Object.values(DidYouReadOptions);
   defaultResidence = ResidenceDefault;
   residenceOptions = ResidenceOptions;
   yourThoughts = YourThoughtsDefault;
@@ -40,6 +50,5 @@ export class UserReactionsFormComponent {
         this.requestsService.getFromFirebase();
       }
     });
-    this.reactionForm.reset();
   }
 }
