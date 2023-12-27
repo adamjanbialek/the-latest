@@ -1,7 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Input, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 
-import {RequestsService} from "../../../core/services/requests.service";
 import {IContent} from "../../models/icontent.model";
 import {
   DidYouReadOptions,
@@ -11,6 +10,8 @@ import {
   YourThoughtsDefault
 } from "../../data/variables";
 import {DataService} from "../../../core/services/data.service";
+import {RequestsService} from "../../../feature-top-stories/interfaces/requests-service.interface";
+import {REQUEST_SERVICE_IMPL} from "../../../core/services/requests-service-impl.service";
 
 @Component({
   selector: 'app-user-reactions-form',
@@ -19,7 +20,7 @@ import {DataService} from "../../../core/services/data.service";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserReactionsFormComponent {
-  constructor(public dataService: DataService, private requestsService: RequestsService) {
+  constructor(public dataService: DataService, @Inject(REQUEST_SERVICE_IMPL) private requestsService: RequestsService) {
   }
 
   @ViewChild('f') reactionForm!: NgForm;

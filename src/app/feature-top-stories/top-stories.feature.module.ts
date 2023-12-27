@@ -8,12 +8,17 @@ import {TopStoriesHomeComponent} from "./components/top-stories-home/top-stories
 import { TopStoriesComponent } from './components/top-stories/top-stories.component';
 import { IndividualStoryComponent } from './components/individual-story/individual-story.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {RequestsServiceImpl, REQUEST_SERVICE_IMPL} from "../core/services/requests-service-impl.service";
+import {DataService} from "../core/services/data.service";
+import {UserReactionsFormComponent} from "../shared/components/user-reactions-form/user-reactions-form.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     TopStoriesHomeComponent,
     TopStoriesComponent,
-    IndividualStoryComponent
+    IndividualStoryComponent,
+    UserReactionsFormComponent
   ],
   imports: [
     CommonModule,
@@ -21,8 +26,15 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     RouterModule,
     SharedModule,
     CoreModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CommonModule,
+    FormsModule,
   ],
-  exports: []
+  exports: [
+    UserReactionsFormComponent
+  ],
+  providers: [
+    {provide: REQUEST_SERVICE_IMPL, useClass: RequestsServiceImpl}, DataService
+  ]
 })
 export class TopStoriesFeatureModule { }

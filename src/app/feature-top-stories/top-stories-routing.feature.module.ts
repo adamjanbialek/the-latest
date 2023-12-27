@@ -5,7 +5,8 @@ import {TopStoriesComponent} from "./components/top-stories/top-stories.componen
 import {IndividualStoryComponent} from "./components/individual-story/individual-story.component";
 
 const appRoutes: Routes = [
-  {path: '', component: TopStoriesHomeComponent, children: [
+  {path: '', component: TopStoriesHomeComponent,
+    children: [
       {path: '', component: TopStoriesComponent, },
       {path: ':id', component: IndividualStoryComponent }
     ]
@@ -13,10 +14,7 @@ const appRoutes: Routes = [
 ]
 
 @NgModule({
-  declarations: [],
   imports: [RouterModule.forChild(appRoutes)],
 })
 
-export class TopStoriesRoutingFeatureModule {
-
-}
+export class TopStoriesRoutingFeatureModule {}

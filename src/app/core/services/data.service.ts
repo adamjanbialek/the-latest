@@ -1,14 +1,13 @@
-import {Injectable} from "@angular/core";
+import {Inject, Injectable} from "@angular/core";
 import {IContent} from "../../shared/models/icontent.model";
-import {RequestsService} from "./requests.service";
 import {FunctionalitiesListService} from "./functionalities-list.service";
 import {Observable, shareReplay, tap} from "rxjs";
+import {RequestsService} from "../../feature-top-stories/interfaces/requests-service.interface";
+import {REQUEST_SERVICE_IMPL} from "./requests-service-impl.service";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DataService {
-  constructor(private requestsService: RequestsService,
+  constructor(@Inject(REQUEST_SERVICE_IMPL) private requestsService: RequestsService,
               private functionalities: FunctionalitiesListService) {
   }
 

@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
   selector: 'app-top-stories',
   templateUrl: './top-stories.component.html',
   styleUrls: ['./top-stories.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopStoriesComponent implements OnInit {
   constructor(public dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) {

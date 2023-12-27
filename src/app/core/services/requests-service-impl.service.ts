@@ -1,18 +1,20 @@
 import {HttpClient} from "@angular/common/http";
-import {Injectable} from "@angular/core";
+import {Injectable, InjectionToken} from "@angular/core";
 import {map, Observable} from "rxjs";
 import {Article} from "../../feature-top-stories/models/article.model";
 import {UserReaction} from "../../shared/models/user-reaction.model";
 import {IContent} from "../../shared/models/icontent.model";
+import {RequestsService} from "../../feature-top-stories/interfaces/requests-service.interface";
+import {firebaseUrls} from "../../shared/data/variables";
 
-@Injectable({
-  providedIn: "root"
-})
-export class RequestsService {
+export const REQUEST_SERVICE_IMPL = new InjectionToken<RequestsService>('RequestsService');
+
+@Injectable()
+export class RequestsServiceImpl implements RequestsService {
   constructor(private http: HttpClient) {
   }
 
-  firebaseUrl = 'https://test-project-f9414-default-rtdb.firebaseio.com/articles.json';
+  firebaseUrl = firebaseUrls.articlesUrl;
 
   getFromFirebase() {
     return this.http.get(this.firebaseUrl).subscribe({
@@ -20,7 +22,7 @@ export class RequestsService {
     })
   }
 
-  private getArticles(res: {[key: string]: unknown}): Article[] {
+  getArticles(res: {[key: string]: unknown}): Article[] {
     let articlesArray: Article[] = [];
 
     if (Array.isArray(res['results'])) {
