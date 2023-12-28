@@ -2,7 +2,7 @@
 <form class="form-container" (ngSubmit)="onSubmit()" #f="ngForm">
   <label for="username"></label><input id="username" name="username" ngModel required minlength="6" #username="ngModel">
   <p *ngIf="username.touched && username.invalid">Input a username or click "Suggest username" button below</p>
-  <button type="button button--default" (click)="suggestUsername()">Suggest username</button>
+  <button type="button" (click)="suggestUsername()">Suggest username</button>
   <p>Share your thoughts:</p>
   <textarea name="yourThoughts" [(ngModel)]="yourThoughts" required></textarea>
   <div ngModelGroup="questions">

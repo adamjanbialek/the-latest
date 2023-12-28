@@ -9,19 +9,24 @@ import {firebaseUrls} from "../../shared/data/variables";
 
 export const REQUEST_SERVICE_IMPL = new InjectionToken<RequestsService>('RequestsService');
 
+/* Implementation of service based on interface that is part of the feature-content module.
+It downloads the data, converts it to desired form, posts data to Firebase and outputs the array that is being stored in
+Firebase in console. This implementation is made for Article functionality. */
 @Injectable()
 export class RequestsServiceImpl implements RequestsService {
   constructor(private http: HttpClient) {
   }
 
-  firebaseUrl = firebaseUrls.articlesUrl;
+  articlesUrl = firebaseUrls.articlesUrl;
 
+  /* method outputting an array of UserReaction objects to console */
   getFromFirebase() {
-    return this.http.get(this.firebaseUrl).subscribe({
+    return this.http.get(this.articlesUrl).subscribe({
       next: res => console.log(res),
     })
   }
 
+  /* method that converts the response to array of Article objects */
   getArticles(res: {[key: string]: unknown}): Article[] {
     let articlesArray: Article[] = [];
 
@@ -55,12 +60,13 @@ export class RequestsServiceImpl implements RequestsService {
     return articlesArray;
   }
 
+  /* method that downloads the data */
   getContentData(url: string): Observable<any> {
     return this.http.get<{}>(url).pipe(map(this.getArticles));
   }
 
-
+  /* method that posts an UserReaction object to FireBase */
   postRequest(content: IContent, userReaction: UserReaction) {
-    return this.http.post(this.firebaseUrl, [content, userReaction]);
+    return this.http.post(this.articlesUrl, [content, userReaction]);
   }
 }

@@ -3,7 +3,7 @@ import {IContent} from "../../shared/models/icontent.model";
 import {UserReaction} from "../../shared/models/user-reaction.model";
 
 export interface RequestsService {
-  firebaseUrl: string;
+  articlesUrl: string;
 
   getFromFirebase(): any;
 

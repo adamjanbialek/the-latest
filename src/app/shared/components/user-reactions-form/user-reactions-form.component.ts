@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, Input, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
-
 import {IContent} from "../../models/icontent.model";
 import {
   DidYouReadOptions,
@@ -49,6 +48,7 @@ export class UserReactionsFormComponent {
       }).subscribe({
       complete: () => {
         this.requestsService.getFromFirebase();
+        this.reactionForm.resetForm();
       }
     });
   }

@@ -4,6 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {IContent} from "../../../shared/models/icontent.model";
 import {Observable} from "rxjs";
 
+/* item's individual component */
+
 @Component({
   selector: 'app-individual-story',
   templateUrl: './individual-story.component.html',
@@ -18,6 +20,7 @@ export class IndividualStoryComponent implements OnInit {
   loaded$!: Observable<IContent[]>;
 
   ngOnInit() {
+    /* handles the data */
     this.loaded$ = this.dataService.passLoadedData();
   }
 }

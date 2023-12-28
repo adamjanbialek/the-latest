@@ -5,6 +5,8 @@ import {Observable, shareReplay, tap} from "rxjs";
 import {RequestsService} from "../../feature-top-stories/interfaces/requests-service.interface";
 import {REQUEST_SERVICE_IMPL} from "./requests-service-impl.service";
 
+/* service that stores data after it is downloaded by RequestsService */
+
 @Injectable()
 export class DataService {
   constructor(@Inject(REQUEST_SERVICE_IMPL) private requestsService: RequestsService,
@@ -14,6 +16,7 @@ export class DataService {
   isLoaded: boolean = false;
   loaded$!: Observable<IContent[]>;
 
+  /* a method that checks if data has been downloaded already */
   passLoadedData() {
     if(!this.isLoaded) {
       return this.getContentIfArrayIsEmpty();
@@ -22,6 +25,7 @@ export class DataService {
     }
   }
 
+  /* a method that downloads the requested data */
   getContentIfArrayIsEmpty() {
     return this.loaded$ = this.requestsService.
     getContentData(
