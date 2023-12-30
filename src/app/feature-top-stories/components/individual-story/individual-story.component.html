@@ -1,7 +1,7 @@
 <mat-spinner *ngIf="!(loaded$ | async) as loaded"></mat-spinner>
 <section *ngIf="(loaded$ | async) as loaded">
   <h1>{{loaded[id].title}}</h1>
-  <a class="button button--default" href="{{loaded[id].link}}" target="_blank">Read more</a>
+  <a class="button button--primary" href="{{loaded[id].link}}" target="_blank">Read more</a>
   <div class="content-container">
     <div class="article-content">
       <div class="abstract">

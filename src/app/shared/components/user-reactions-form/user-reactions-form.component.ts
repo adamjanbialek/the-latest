@@ -1,5 +1,4 @@
-import {ChangeDetectionStrategy, Component, Inject, Input, ViewChild} from '@angular/core';
-import {NgForm} from "@angular/forms";
+import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
 import {IContent} from "../../models/icontent.model";
 import {
   DidYouReadOptions,
@@ -11,6 +10,7 @@ import {
 import {DataService} from "../../../core/services/data.service";
 import {RequestsService} from "../../../feature-top-stories/interfaces/requests-service.interface";
 import {REQUEST_SERVICE_IMPL} from "../../../core/services/requests-service-impl.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-user-reactions-form',
@@ -19,10 +19,9 @@ import {REQUEST_SERVICE_IMPL} from "../../../core/services/requests-service-impl
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserReactionsFormComponent {
-  constructor(public dataService: DataService, @Inject(REQUEST_SERVICE_IMPL) private requestsService: RequestsService) {
-  }
+  constructor(public dataService: DataService, @Inject(REQUEST_SERVICE_IMPL) private requestsService: RequestsService,
+              private formBuilder: FormBuilder) {}
 
-  @ViewChild('f') reactionForm!: NgForm;
   @Input() selectedContentItem!: IContent;
 
   didYouReadOptions = DidYouReadOptions;
@@ -31,24 +30,28 @@ export class UserReactionsFormComponent {
   didYouReadOptionsValues = Object.values(DidYouReadOptions);
   defaultResidence = ResidenceDefault;
   residenceOptions = ResidenceOptions;
-  yourThoughts = YourThoughtsDefault;
+  yourThoughtsDefault = YourThoughtsDefault;
+
+  userReactionForm: FormGroup = this.formBuilder.group({
+    username:  ['', [Validators.required, Validators.minLength(6)]],
+    yourThoughts: '',
+    questions: this.formBuilder.group({
+      didYouRead: this.didYouReadOptionsDefaultAnswer,
+      residence: this.defaultResidence
+    })
+  })
 
   suggestUsername() {
-    this.reactionForm.form.patchValue({
+    this.userReactionForm.patchValue({
       'username': UsernameDefault
     });
-  };
+  }
 
   onSubmit() {
-    this.requestsService.postRequest(this.selectedContentItem, {
-        username: this.reactionForm.value.username,
-        yourThoughts: this.reactionForm.value.yourThoughts,
-        didYouRead: this.reactionForm.value.questions.didYouRead,
-        residence: this.reactionForm.value.questions.residence
-      }).subscribe({
+    this.requestsService.postRequest(this.selectedContentItem, this.userReactionForm.value).subscribe({
       complete: () => {
         this.requestsService.getFromFirebase();
-        this.reactionForm.resetForm();
+        this.userReactionForm.reset();
       }
     });
   }

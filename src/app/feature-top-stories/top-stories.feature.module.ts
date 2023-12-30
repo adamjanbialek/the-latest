@@ -11,7 +11,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {RequestsServiceImpl, REQUEST_SERVICE_IMPL} from "../core/services/requests-service-impl.service";
 import {DataService} from "../core/services/data.service";
 import {UserReactionsFormComponent} from "../shared/components/user-reactions-form/user-reactions-form.component";
-import {FormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import {FormsModule} from "@angular/forms";
     CoreModule,
     MatProgressSpinnerModule,
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     UserReactionsFormComponent
