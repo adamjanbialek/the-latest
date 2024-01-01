@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {DataService} from "../../../core/services/data.service";
+import {ContentDataService} from "../../services/content-data.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IContent} from "../../../shared/models/icontent.model";
 import {Observable} from "rxjs";
@@ -13,7 +13,7 @@ import {Observable} from "rxjs";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopStoriesComponent implements OnInit {
-  constructor(public dataService: DataService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(public dataService: ContentDataService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   type = this.activatedRoute.snapshot.paramMap.get('type')!;

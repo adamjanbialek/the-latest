@@ -6,9 +6,9 @@ import {
   ResidenceDefault, ResidenceOptions,
   UsernameDefault,
   YourThoughtsDefault
-} from "../../../shared/data/variables";
-import {DataService} from "../../../core/services/data.service";
-import {REQUEST_SERVICE_IMPL} from "../../../core/services/requests-service-impl.service";
+} from "../../../core/variables/variables";
+import {ContentDataService} from "../../services/content-data.service";
+import {REQUEST_SERVICE_IMPL} from "../../services/requests-service-impl.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RequestsService} from "../../interfaces/requests-service.interface";
 
@@ -19,7 +19,7 @@ import {RequestsService} from "../../interfaces/requests-service.interface";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserReactionsFormComponent {
-  constructor(public dataService: DataService, @Inject(REQUEST_SERVICE_IMPL) private requestsService: RequestsService,
+  constructor(public dataService: ContentDataService, @Inject(REQUEST_SERVICE_IMPL) private requestsService: RequestsService,
               private formBuilder: FormBuilder) {}
 
   @Input() selectedContentItem!: IContent;

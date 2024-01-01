@@ -9,9 +9,7 @@ export interface Functionality {
   isReady: boolean;
 }
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable()
 export class FunctionalitiesListService {
   selectedFunctionality = '';
 
