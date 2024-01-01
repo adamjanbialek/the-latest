@@ -10,15 +10,21 @@
 
 .present-features, .coming-features {
   display: flex;
-  gap: 30px;
+  gap: 25px;
 }
 
 .coming-features {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .tile {
   height: 250px;
+
+  &-title {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5rem;
+  }
 }
 
 @media (max-width: $_small-tablet) {

@@ -3,13 +3,13 @@
     <div class="present-features">
       <a class="tile button" *ngFor="let functionality of functionalitiesReady" (click)="goToFunctionality(functionality.url)">
         <img src="{{functionality.imageUrl}}">
-        <p class="tile-title">{{functionality.name}}</p>
+        <h3 class="tile-title">{{functionality.name}}</h3>
       </a>
     </div>
     <div class="coming-features">
       <a class="tile soon" *ngFor="let functionality of functionalitiesComingSoon">
         <img src="{{functionality.imageUrl}}">
-        <p class="tile-title">{{functionality.name}} <br/> Coming soon</p>
+        <h3 class="tile-title">{{functionality.name}} <br/> Coming soon</h3>
       </a>
     </div>
   </div>

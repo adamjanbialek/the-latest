@@ -1,10 +1,13 @@
 @import "../../../../scss/abstracts/variables";
 
 .articles-container {
-  margin-top: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
+  margin-top: 20px;
+  //display: flex;
+  //flex-wrap: wrap;
+  //gap: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 35px 25px;
 }
 
 a {
@@ -18,27 +21,28 @@ a {
 }
 
 .tile {
-  width: calc(50% - 25px);
-  min-width: 360px;
+  //width: calc(50% - 25px);
+  //min-width: 360px;
+  margin-inline: auto;
 }
 
 .tile-title {
-  height: 140px;
+  height: 110px;
+  font-size: 22px;
   line-height: 1.25;
-  width: calc(100% - 80px);
-  padding-inline: 40px;
-  font-size: 26px;
+  width: calc(100% - 64px);
+  padding-inline: 32px;
 }
 
 @media (max-width: $_large-tablet) {
   .articles-container {
-    gap: 20px;
-    justify-content: center;
+    grid-template-columns: 1fr 1fr;
   }
+}
 
-  .tile-title {
-    font-size: 20px;
-    height: 110px;
+@media (max-width: $_small-tablet) {
+  .articles-container {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -49,6 +53,7 @@ a {
   }
 
   .tile-title {
+    height: 90px;
     font-size: 18px;
     padding-inline: 20px;
     width: calc(100% - 40px);

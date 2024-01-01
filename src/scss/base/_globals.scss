@@ -8,13 +8,14 @@ body {
 
 main {
   position: relative;
-  margin: 120px auto;
-  padding-inline: 60px;
+  margin: 40px auto;
+  padding-inline: 16px;
 }
 
-section {
-  max-width: 1200px;
+section, .navbar-container {
   margin-inline: auto;
+  max-width: 1200px;
+  width: 100%;
 }
 
 a {

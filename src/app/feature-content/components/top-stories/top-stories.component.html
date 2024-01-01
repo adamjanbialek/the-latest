@@ -4,7 +4,7 @@
   <div class="articles-container" *ngIf="(loaded$ | async) as loaded">
     <a class="tile button" *ngFor="let contentItem of loaded; let i = index" (click)="toContentItem(i)">
       <img src="{{contentItem.image}}">
-      <h2 class="tile-title">{{contentItem.title}}</h2>
+      <h3 class="tile-title">{{contentItem.title}}</h3>
     </a>
   </div>
 </section>

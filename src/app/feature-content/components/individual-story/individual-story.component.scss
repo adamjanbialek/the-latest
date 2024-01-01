@@ -7,12 +7,8 @@ h1 + .button {
 .content-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 30px;
+  grid-gap: 60px;
   margin-top: 50px;
-}
-
-.abstract {
-  font-size: 24px;
 }
 
 .abstract + img {
@@ -22,7 +18,7 @@ h1 + .button {
 @media (max-width: $_large-tablet) {
   .content-container {
     grid-template-columns: 1fr;
-    grid-column-gap: 30px;
+    grid-gap: 30px;
   }
 
   img {
