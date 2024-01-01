@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {IContent} from "../../models/icontent.model";
+import {IContent} from "../../../shared/models/icontent.model";
 import {
   DidYouReadOptions,
   DidYouReadOptionsDefaultAnswer,
   ResidenceDefault, ResidenceOptions,
   UsernameDefault,
   YourThoughtsDefault
-} from "../../data/variables";
+} from "../../../shared/data/variables";
 import {DataService} from "../../../core/services/data.service";
-import {RequestsService} from "../../../feature-top-stories/interfaces/requests-service.interface";
+import {RequestsService} from "../../interfaces/requests-service.interface";
 import {REQUEST_SERVICE_IMPL} from "../../../core/services/requests-service-impl.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 

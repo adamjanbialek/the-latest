@@ -10,7 +10,7 @@ import { IndividualStoryComponent } from './components/individual-story/individu
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {RequestsServiceImpl, REQUEST_SERVICE_IMPL} from "../core/services/requests-service-impl.service";
 import {DataService} from "../core/services/data.service";
-import {UserReactionsFormComponent} from "../shared/components/user-reactions-form/user-reactions-form.component";
+import {UserReactionsFormComponent} from "./components/user-reactions-form/user-reactions-form.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
