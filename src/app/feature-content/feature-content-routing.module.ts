@@ -17,4 +17,4 @@ const appRoutes: Routes = [
   imports: [RouterModule.forChild(appRoutes)],
 })
 
-export class TopStoriesRoutingFeatureModule {}
+export class FeatureContentRoutingModule {}

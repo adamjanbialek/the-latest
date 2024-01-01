@@ -3,7 +3,7 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {CoreModule} from "../core/core.module";
 import {SharedModule} from "../shared/shared.module";
-import {TopStoriesRoutingFeatureModule} from "./top-stories-routing.feature.module";
+import {FeatureContentRoutingModule} from "./feature-content-routing.module";
 import {TopStoriesHomeComponent} from "./components/top-stories-home/top-stories-home.component";
 import { TopStoriesComponent } from './components/top-stories/top-stories.component';
 import { IndividualStoryComponent } from './components/individual-story/individual-story.component';
@@ -29,7 +29,7 @@ import {MatDividerModule} from "@angular/material/divider";
   ],
   imports: [
     CommonModule,
-    TopStoriesRoutingFeatureModule,
+    FeatureContentRoutingModule,
     RouterModule,
     SharedModule,
     CoreModule,
@@ -51,4 +51,4 @@ import {MatDividerModule} from "@angular/material/divider";
     {provide: REQUEST_SERVICE_IMPL, useClass: RequestsServiceImpl}, DataService
   ]
 })
-export class TopStoriesFeatureModule { }
+export class FeatureContentModule { }

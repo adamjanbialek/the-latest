@@ -2,8 +2,9 @@ import {Inject, Injectable} from "@angular/core";
 import {IContent} from "../../shared/models/icontent.model";
 import {FunctionalitiesListService} from "./functionalities-list.service";
 import {Observable, shareReplay, tap} from "rxjs";
-import {RequestsService} from "../../feature-top-stories/interfaces/requests-service.interface";
+
 import {REQUEST_SERVICE_IMPL} from "./requests-service-impl.service";
+import {RequestsService} from "../../feature-content/interfaces/requests-service.interface";
 
 /* service that stores data after it is downloaded by RequestsService */
 

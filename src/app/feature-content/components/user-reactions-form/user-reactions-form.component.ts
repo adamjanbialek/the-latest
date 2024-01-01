@@ -8,9 +8,9 @@ import {
   YourThoughtsDefault
 } from "../../../shared/data/variables";
 import {DataService} from "../../../core/services/data.service";
-import {RequestsService} from "../../interfaces/requests-service.interface";
 import {REQUEST_SERVICE_IMPL} from "../../../core/services/requests-service-impl.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {RequestsService} from "../../interfaces/requests-service.interface";
 
 @Component({
   selector: 'app-user-reactions-form',
