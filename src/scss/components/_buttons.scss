@@ -1,7 +1,6 @@
 .button {
-  cursor: pointer;
-
   &--primary {
+    display: block;
     width: max-content;
     padding: 10px 20px;
     border-radius: 24px;
@@ -10,6 +9,10 @@
     transition: .3s all ease-in;
     text-decoration: none;
     border: none;
+  }
+
+  &:not(:disabled) {
+    cursor: pointer;
   }
 
   &:not(:disabled):hover {

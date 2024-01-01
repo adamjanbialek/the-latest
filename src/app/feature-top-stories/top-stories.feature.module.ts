@@ -12,6 +12,13 @@ import {RequestsServiceImpl, REQUEST_SERVICE_IMPL} from "../core/services/reques
 import {DataService} from "../core/services/data.service";
 import {UserReactionsFormComponent} from "../shared/components/user-reactions-form/user-reactions-form.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatOptionModule} from "@angular/material/core";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -28,7 +35,14 @@ import {ReactiveFormsModule} from "@angular/forms";
     CoreModule,
     MatProgressSpinnerModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatDividerModule
   ],
   exports: [
     UserReactionsFormComponent

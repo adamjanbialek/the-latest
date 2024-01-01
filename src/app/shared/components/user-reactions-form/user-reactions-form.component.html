@@ -1,25 +1,37 @@
 <h2>What's your opinion?</h2>
+
 <form class="form-container" [formGroup]="userReactionForm" (ngSubmit)="onSubmit()">
-  <label for="username"></label>
-  <input type="text" id="username" name="username" formControlName="username">
-  <div *ngIf="userReactionForm.get('username')?.invalid && userReactionForm.get('username')?.touched">
-    <small>Username should be at least 6 characters</small>
-  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="username" placeholder="Username">
+    <mat-error *ngIf="userReactionForm.get('username')?.hasError('required')">Username is required</mat-error>
+    <mat-error *ngIf="userReactionForm.get('username')?.hasError('minlength')">Minimum 6 characters required</mat-error>
+  </mat-form-field>
+
   <button type="button" class="button button--primary" (click)="suggestUsername()">Suggest username</button>
-  <p>Share your thoughts:</p>
-  <textarea name="yourThoughts" formControlName="yourThoughts"></textarea>
-  <div formGroupName="questions">
-    <label for="did-you-read">Did you read the whole article?</label>
-    <select id="did-you-read" name="didYouRead" formControlName="didYouRead">
-      <option *ngFor="let option of didYouReadOptionsKeys; let i = index" [value]="option">{{didYouReadOptionsValues[i]}}</option>
-    </select>
-    <div>
-      <p>Do you reside in the USA?</p>
-      <label *ngFor="let option of residenceOptions">
-        <input type="radio" name="residence" class="radio-input" [value]="option" formControlName="residence">
-        {{option}}
-      </label>
-    </div>
+
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Share your thoughts:</mat-label>
+    <textarea matInput formControlName="yourThoughts" placeholder="Enter text here"  cdkTextareaAutosize></textarea>
+    <mat-error *ngIf="userReactionForm.get('yourThoughts')?.hasError('required')">Your thoughts are required</mat-error>
+  </mat-form-field>
+
+  <div formGroupName="questions" class="questions-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Did you read the whole article?</mat-label>
+      <mat-select formControlName="didYouRead">
+        <mat-option *ngFor="let option of didYouReadOptionsKeys; let i = index" [value]="option">{{didYouReadOptionsValues[i]}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-label>Do you reside in the USA?</mat-label>
+    <mat-radio-group formControlName="residence">
+      <mat-radio-button *ngFor="let option of residenceOptions" [value]="option">{{option}}</mat-radio-button>
+    </mat-radio-group>
   </div>
-  <button type="submit" class="button button--primary">Submit</button>
+
+  <br>
+
+  <button type="submit" class="button button--primary" [disabled]="!userReactionForm.valid">Submit</button>
 </form>

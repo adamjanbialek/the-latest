@@ -34,7 +34,7 @@ export class UserReactionsFormComponent {
 
   userReactionForm: FormGroup = this.formBuilder.group({
     username:  ['', [Validators.required, Validators.minLength(6)]],
-    yourThoughts: '',
+    yourThoughts: ['', [Validators.required]],
     questions: this.formBuilder.group({
       didYouRead: this.didYouReadOptionsDefaultAnswer,
       residence: this.defaultResidence
