@@ -1,6 +1,6 @@
 import {Observable} from "rxjs";
-import {IContent} from "../../shared/models/icontent.model";
-import {UserReaction} from "../../shared/models/user-reaction.model";
+import {IContent} from "../models/icontent.model";
+import {UserReaction} from "../models/user-reaction.model";
 
 export interface RequestsService {
   articlesUrl: string;

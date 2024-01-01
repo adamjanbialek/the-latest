@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Inject, Input} from '@angular/core';
-import {IContent} from "../../../shared/models/icontent.model";
+import {IContent} from "../../models/icontent.model";
 import {
   DidYouReadOptions,
   DidYouReadOptionsDefaultAnswer,

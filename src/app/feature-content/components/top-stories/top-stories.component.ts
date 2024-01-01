@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {ContentDataService} from "../../services/content-data.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {IContent} from "../../../shared/models/icontent.model";
+import {IContent} from "../../models/icontent.model";
 import {Observable} from "rxjs";
 
 /* component that outputs all the items being stored in array to the screen */

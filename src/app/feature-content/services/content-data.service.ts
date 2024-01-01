@@ -1,5 +1,5 @@
 import {Inject, Injectable} from "@angular/core";
-import {IContent} from "../../shared/models/icontent.model";
+import {IContent} from "../models/icontent.model";
 import {FunctionalitiesListService} from "../../core/services/functionalities-list.service";
 import {Observable, shareReplay, tap} from "rxjs";
 import {REQUEST_SERVICE_IMPL} from "./requests-service-impl.service";

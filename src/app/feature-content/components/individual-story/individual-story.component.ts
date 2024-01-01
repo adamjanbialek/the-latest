@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {ContentDataService} from "../../services/content-data.service";
 import {ActivatedRoute} from "@angular/router";
-import {IContent} from "../../../shared/models/icontent.model";
+import {IContent} from "../../models/icontent.model";
 import {Observable} from "rxjs";
 
 /* item's individual component */

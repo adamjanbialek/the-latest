@@ -1,4 +1,5 @@
-import {IContent} from "../../shared/models/icontent.model";
+import {IContent} from "./icontent.model";
+import {ContentSource} from "../../core/variables/variables";
 
 export class Content implements IContent {
   static source = '';
@@ -8,7 +9,7 @@ export class Content implements IContent {
 }
 
 export class Article implements Content {
-  static source = 'https://api.nytimes.com/svc/topstories/v2/world.json?api-key=xiE45x0Ko9i4PoeHRqEU9rGDYWi4AGjI';
+  static source = ContentSource.articlesDataUrl;
 
   constructor(public title: string, public link: string, public abstract: string, public image: string) {}
 

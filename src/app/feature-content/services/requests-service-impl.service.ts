@@ -1,10 +1,10 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable, InjectionToken} from "@angular/core";
 import {map, Observable} from "rxjs";
-import {UserReaction} from "../../shared/models/user-reaction.model";
-import {IContent} from "../../shared/models/icontent.model";
+import {UserReaction} from "../models/user-reaction.model";
+import {IContent} from "../models/icontent.model";
 import {RequestsService} from "../interfaces/requests-service.interface";
-import {firebaseUrls} from "../../core/variables/variables";
+import {FirebaseUrls} from "../../core/variables/variables";
 import {Article} from "../models/article.model";
 
 export const REQUEST_SERVICE_IMPL = new InjectionToken<RequestsService>('RequestsService');
@@ -17,7 +17,7 @@ export class RequestsServiceImpl implements RequestsService {
   constructor(private http: HttpClient) {
   }
 
-  articlesUrl = firebaseUrls.articlesUrl;
+  articlesUrl = FirebaseUrls.articlesReactionsUrl;
 
   /* method outputting an array of UserReaction objects to console */
   getFromFirebase() {
