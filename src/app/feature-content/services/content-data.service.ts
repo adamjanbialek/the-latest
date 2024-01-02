@@ -29,7 +29,7 @@ export class ContentDataService {
   getContentIfArrayIsEmpty() {
     return this.loaded$ = this.requestsService.
     getContentData(
-      this.functionalities.selectFunctionality(this.functionalities.selectedFunctionality).dataUrl!
+      this.functionalities.selectFunctionality(this.functionalities.selectedFunctionality)?.dataUrl!
     ).
     pipe(
       shareReplay(1),

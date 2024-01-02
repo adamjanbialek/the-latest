@@ -4,10 +4,12 @@ import {map, Observable} from "rxjs";
 import {UserReaction} from "../models/user-reaction.model";
 import {IContent} from "../models/icontent.model";
 import {RequestsService} from "../interfaces/requests-service.interface";
-import {FirebaseUrls} from "../../core/variables/variables";
-import {Article} from "../models/article.model";
+import {Content} from "../models/content.model";
+import {environment} from "../../../environments/environment";
 
 export const REQUEST_SERVICE_IMPL = new InjectionToken<RequestsService>('RequestsService');
+
+export class Article extends Content {}
 
 /* Implementation of service based on interface that is part of the feature-content module.
 It downloads the data, converts it to desired form, posts data to Firebase and outputs the array that is being stored in
@@ -17,11 +19,11 @@ export class RequestsServiceImpl implements RequestsService {
   constructor(private http: HttpClient) {
   }
 
-  articlesUrl = FirebaseUrls.articlesReactionsUrl;
+  reactionsUrl = environment.reactionsUrl;
 
   /* method outputting an array of UserReaction objects to console */
   getFromFirebase() {
-    return this.http.get(this.articlesUrl).subscribe({
+    return this.http.get(this.reactionsUrl).subscribe({
       next: res => console.log(res),
     })
   }
@@ -67,6 +69,6 @@ export class RequestsServiceImpl implements RequestsService {
 
   /* method that posts an UserReaction object to FireBase */
   postRequest(content: IContent, userReaction: UserReaction) {
-    return this.http.post(this.articlesUrl, [content, userReaction]);
+    return this.http.post(this.reactionsUrl, [content, userReaction]);
   }
 }

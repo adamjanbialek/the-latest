@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FunctionalitiesListService, Functionality} from "../../../core/services/functionalities-list.service";
+import {FunctionalitiesListService} from "../../../core/services/functionalities-list.service";
 import {Router} from "@angular/router";
+import {Functionality} from "../../../core/models/functionality.model";
 
 @Component({
   selector: 'app-home',

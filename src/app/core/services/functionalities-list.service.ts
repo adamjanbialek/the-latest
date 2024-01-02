@@ -1,32 +1,23 @@
 import {Injectable} from "@angular/core";
-
-export interface Functionality {
-  readonly contentType: string;
-  dataUrl: string;
-  name: string;
-  url : string;
-  imageUrl: string;
-  isReady: boolean;
-}
+import {functionalitiesList} from "../variables/variables";
+import {Functionality} from "../models/functionality.model";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class FunctionalitiesListService {
   selectedFunctionality = '';
 
-  selectFunctionality(contentType: string): Functionality {
+  constructor(private router: Router) {
+  }
+
+  selectFunctionality(contentType: string): Functionality | void {
     for (let functionality of this.functionalitiesArray) {
       if(functionality.contentType === contentType) {
         return functionality;
       }
     }
-    return {
-      dataUrl: '',
-      contentType: '',
-      name: '',
-      url: '',
-      imageUrl: '',
-      isReady: false
-    }
+
+    this.router.navigate(['']);
   }
 
   readyArray: Functionality[] = [];
@@ -50,39 +41,5 @@ export class FunctionalitiesListService {
     return this.comingSoonArray;
   }
 
-  functionalitiesArray: Functionality[] = [
-    {
-      dataUrl: 'https://api.nytimes.com/svc/topstories/v2/world.json?api-key=xiE45x0Ko9i4PoeHRqEU9rGDYWi4AGjI',
-      contentType: 'articles',
-      name: 'Top Stories',
-      url: 'articles',
-      imageUrl: 'assets/news.jpg',
-      isReady: true
-    },
-    {
-      dataUrl: '',
-      contentType: 'weather',
-      name: 'Weather Forecast',
-      url: 'weather',
-      imageUrl: 'assets/weather.jpg',
-      isReady: false
-    },
-    {
-      dataUrl: '',
-      contentType: 'stocks',
-      name: 'Stocks Info',
-      url: 'stocks',
-      imageUrl: 'assets/stocks.jpg',
-      isReady: false
-    },
-    {
-      dataUrl: '',
-      contentType: 'results',
-      name: 'Live Results',
-      url: 'results',
-      imageUrl: 'assets/sports.jpg',
-      isReady: false
-    }
-  ]
-
+  functionalitiesArray: Functionality[] = [...functionalitiesList];
 }
