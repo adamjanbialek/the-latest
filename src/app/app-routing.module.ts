@@ -4,8 +4,8 @@ import {HomeComponent} from "./root/components/home/home.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'content/:type', loadChildren: () => import('./feature-content/feature-content.module')
-      .then(m => m.FeatureContentModule)
+  {path: 'content/:type', loadChildren: () => import('./feature-articles/feature-articles.module')
+      .then(m => m.FeatureArticlesModule)
   },
 ]
 

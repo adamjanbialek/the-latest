@@ -1,10 +1,10 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable, InjectionToken} from "@angular/core";
 import {map, Observable} from "rxjs";
-import {UserReaction} from "../models/user-reaction.model";
-import {IContent} from "../models/icontent.model";
-import {RequestsService} from "../interfaces/requests-service.interface";
-import {Content} from "../models/content.model";
+import {UserReaction} from "../../feature-content/models/user-reaction.model";
+import {IContent} from "../../feature-content/models/icontent.model";
+import {RequestsService} from "../../feature-content/interfaces/requests-service.interface";
+import {Content} from "../../feature-content/models/content.model";
 import {environment} from "../../../environments/environment";
 
 export const REQUEST_SERVICE_IMPL = new InjectionToken<RequestsService>('RequestsService');
