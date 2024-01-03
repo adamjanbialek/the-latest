@@ -4,7 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {IContent} from "../../models/icontent.model";
 import {Observable} from "rxjs";
 
-/* item's individual component */
+/* content item's individual component displayed after it its chosen in the list of content items */
 
 @Component({
   selector: 'app-individual-story',
@@ -20,7 +20,7 @@ export class IndividualStoryComponent implements OnInit {
   loaded$!: Observable<IContent[]>;
 
   ngOnInit() {
-    /* handles the data */
+    /* loads the data through a service */
     this.loaded$ = this.dataService.passLoadedData();
   }
 }

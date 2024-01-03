@@ -13,10 +13,11 @@ export class ContentDataService {
               private functionalities: FunctionalitiesListService) {
   }
 
+  /* variable holding a boolean value that controls if data has been already downloaded */
   isLoaded: boolean = false;
   loaded$!: Observable<IContent[]>;
 
-  /* a method that checks if data has been downloaded already */
+  /* a method that checks if data has been downloaded already and if not then it runs a method that downloads the data */
   passLoadedData() {
     if(!this.isLoaded) {
       return this.getContentIfArrayIsEmpty();

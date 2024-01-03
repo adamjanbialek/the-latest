@@ -3,6 +3,8 @@ import {functionalitiesList} from "../variables/variables";
 import {Functionality} from "../models/functionality.model";
 import {Router} from "@angular/router";
 
+/* a services that stores data about functionalities, sorts by their status(whether they are ready for use or not) */
+
 @Injectable()
 export class FunctionalitiesListService {
   selectedFunctionality = '';
@@ -10,6 +12,7 @@ export class FunctionalitiesListService {
   constructor(private router: Router) {
   }
 
+  /* a method that verifies existence of Functionality(that is a part of URL) and redirects to Home Page if it doesn't find a match */
   selectFunctionality(contentType: string): Functionality | void {
     for (let functionality of this.functionalitiesArray) {
       if(functionality.contentType === contentType) {

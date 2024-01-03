@@ -48,7 +48,9 @@ import {MatDividerModule} from "@angular/material/divider";
     UserReactionsFormComponent
   ],
   providers: [
-    {provide: REQUEST_SERVICE_IMPL, useClass: RequestsServiceImpl}, ContentDataService
+    /* concrete of a service through a use of InjectionToken based on the Request Service interface */
+    {provide: REQUEST_SERVICE_IMPL, useClass: RequestsServiceImpl},
+    ContentDataService
   ]
 })
 export class FeatureContentModule { }

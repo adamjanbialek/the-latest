@@ -1,5 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/* a pipe that converts first letter to upper case(just for presentation purposes really) */
+
 @Pipe({
   name: 'capitalize',
   pure: true

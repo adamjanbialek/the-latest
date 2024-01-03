@@ -15,6 +15,7 @@ export class TopStoriesHomeComponent implements OnInit{
   }
 
   ngOnInit() {
+    /* gets the parameter from URL(which functionality was selected) to store its value in a service */
     this.functionalities.selectedFunctionality = this.activatedRoute.snapshot.paramMap.get('type')!;
   }
 
