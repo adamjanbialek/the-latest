@@ -1,34 +1,41 @@
-Aplikacja jest podzielona na moduły - App, AppRouting, Core, Share, FeatureTopStories. W Core Module przechowywane są dane. 
-W DataService przechowywany jest wynik GET requestu. Komponenty sprawdzają wartość zawartego tam arrayu i wywołują request 
-tylko wtedy, kiedy array w DataService jest pusty.
+Opis dla wersji 0.8.0:
 
-Kiedy przejdziemy z komponentu TopStories na IndividualStories otwiera się strona z podstawowymi danymi na temat artykułu. 
-Mamy możliwość wypełnienia formularza UserReactionsForm, który po kliknięciu wysyła się do bazy w Firebase.
+Aplikacja jest podzielona na moduły - App, AppRouting, Core, Shared, FeatureContent, FeatureContentRouting.
+
+W AppModule mamy 2 komponenty - AppComponent i HomeComponent, importuje on moduły Core i Shared, a także AppRoutingModule, 
+w którym jest ustawiony lazy loading dla modułu FeatureContentModule.
+
+W Core Module przechowywane są serwisy, modele, pipe'y i zmienne, które mogą być potencjalnie używane w całej aplikacji.
+Jeśli chodzi o zmienne to są tam przechowywane wartości zmiennych po to, żeby uniknąć zbędnego modyfikowania plików .html i .ts komponentów
+w razie potrzeby modyfikacji wartości np. stringów i po to, żeby w tych plikach była wyłącznie logika i żeby nie mieszała się z wartościami
+literalnymi.
+
+W SharedModule jest przechowywany komponent NavBaru i importowane są dwa moduły będące częściami Angular Material wykorzystywane w NavBarze.
+
+Po wybraniu funkcjonaloności w HomeComponent przechodzimy do lazy loadowanego modułu FeatureContent, który jest "sercem aplikacji". Tam w 
+ContentDataService przechowywany jest wynik GET requestu. Komponenty sprawdzają wartość zawartego tam arrayu i wywołują request tylko wtedy, 
+kiedy array w ContentDataService jest pusty. Kiedy przejdziemy z komponentu TopStories na IndividualStories otwiera się strona z podstawowymi 
+danymi na temat artykułu. Mamy możliwość wypełnienia formularza UserReactionsForm, który po kliknięciu wysyła wartość formularza do bazy w 
+Firebase.
 
 Zaraz po wysyłaniu danych, uruchamia się request GET pobierający wszystkie posty z bazy i printujący je w konsoli. Wyobrażam sobie, 
-że można byłoby stworzyć moduł zawierające wszystkie reakcje użytkownika. Na tą chwilę to printowanie tych danych nie spełnia żadnej roli poza 
-pokazywaniem tego, że requesty działają poprawnie.
+że można byłoby stworzyć moduł zawierające wszystkie reakcje użytkowników na temat artykułu. Na tą chwilę to printowanie tych danych nie 
+spełnia żadnej roli poza pokazywaniem tego, że requesty działają poprawnie.
 
-Na stronie tytułowej mamy 4 funkcjonalności, jedna oczywiście działa.
-Jest zawarta w module TopStoriesFeatureModule, który ma zaimplementowany lazy loading. Nie zdążyłem wdrożyć mechanizmu autentyfikacji 
-użytkowanika, co za tym idzie nie zaimplementowałem CanActivate, CanActivateChild, czy CanDeactivate, a także AutoLoginu, AutoLogoffu, 
-co zrobiłbym na podstawie tokena. W Firebase też jest oczywiście umożliwiana zapisywania i odczytywania tylko przez zalogowanych 
-użytkowników. Wykorzystałbym w tym celu Interceptory, gdzie dodałbym header requestu z odpowiednią wartością.
+Cały moduł FeatureContent działa abstrakcyjnie, wystarczyłoby wstrzyknąć z użyciem InjectionTokena realną implementacje serwisu opartego 
+na interfejsie RequestsService i stworzyć plik modułu wykorzystującgoe te same komponenty, co FeatureContentModule, żeby dodać kolejną 
+funkcjonalność do aplikacji.
 
-Nie korzystałem z subskrypcji i odsubskrybowania, bo trzy observables, które mam w swoim projekcie to observablese związane z requestami http, 
-które po pobraniu danych, bądź wyrzucaniu errora, czyli po wypełnieniu(complete) same się odsubskrybowują.
+W projekcie wykorzystałem strukture scssu 7-1, co prawda subfolderów jest tylko 5, ale to wynika ze skali projektu. Korzystałem ze zmiennych
+scssowych, jeśli chodzi o breakpointy i kolory- zadbałem o responsywność w przedziale okolo 320 do 1920. Stworzyłem też customowy motyw dla
+Angular Material.
 
-W projekcie wykorzystałem strukture scssu 7-1, co prawda subfolderów jest tylko 5, ale to wynika ze skali projektu. Korzystałem ze zmiennych 
-scssowych, jeśli chodzi o breakpointy i kolory- zadbałem o responsywność w przedziale okolo 320 do 1920.
+Można byłoby zaimplementować mechanizm autentyfikacji użytkownika, co za tym idzie wykorzystać CanActivate, CanActivateChild, czy 
+CanDeactivate, a także AutoLogin, AutoLogoff na podstawie tokena. W Firebase też jest oczywiście umożliwiana zapisywania i odczytywania 
+tylko przez zalogowanych użytkowników. Wykorzystałbym w tym celu Interceptory, gdzie dodałbym header request z odpowiednią wartością.
 
-Oczywiście korzystałem z GITa, stworzyłem 3 branche, jeden master, a dwa służyły do rozwijania funkcjonalności aplikacji. Po 
-zakończeniu pracy nad nią zmergeowałem go z powrotem do mastera.
-
-Zmodyfikowałem komponent FeatureTopStoriesComponent tak, żeby działał abstrakcyjnie i w obecnej chwili byłby obsłużyć wszystkie 4 funkcjonalności, 
-więc można byłoby zmienić jego nazwę na FeatureContent. Trzeba byłoby jeszcze tylko zmodyfikować request pobierający dane tak, żeby dynamicznie 
-ustalał który implementacje pobierania danych z API będzie w danej chwili wykorzystał. 
-Z innych rzeczy przydałby się Loading Spinner wykorzystany globalnie oraz implementacja planszy, która by przesłaniała formularz po jego 
-wypełnieniu z podziękowaniem.
+Zmodyfikowałem komponent FeatureTopStoriesComponent tak, żeby działał abstrakcyjnie i w obecnej chwili byłby obsłużyć wszystkie 4 
+funkcjonalności. Z innych rzeczy przydałaby się implementacja planszy, która by przesłaniała formularz po jego wypełnieniu z podziękowaniem.
 
 
 # TheLatest
