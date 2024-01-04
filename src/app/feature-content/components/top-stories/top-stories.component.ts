@@ -16,8 +16,8 @@ export class TopStoriesComponent implements OnInit {
   constructor(public dataService: ContentDataService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
-  /* gets the parameter from URL(which functionality was selected) */
-  type = this.activatedRoute.snapshot.paramMap.get('type')!;
+  /* gets the data passed through routing(which functionality was selected) */
+  functionality = this.activatedRoute.snapshot.data['functionality'];
   loaded$!: Observable<IContent[]>;
 
   ngOnInit() {
@@ -27,6 +27,6 @@ export class TopStoriesComponent implements OnInit {
 
   /* a method that redirects to one of the items individual pages */
   toContentItem(i: number) {
-    this.router.navigate(['/content/', this.type, i]);
+    this.router.navigate(['/content/', this.functionality, i]);
   }
 }
