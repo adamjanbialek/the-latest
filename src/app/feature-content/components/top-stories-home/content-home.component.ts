@@ -5,12 +5,12 @@ import {FunctionalitiesListService} from "../../../core/services/functionalities
 /* container component of the selected functionality */
 
 @Component({
-  selector: 'app-top-stories-home',
-  templateUrl: './top-stories-home.component.html',
-  styleUrls: ['./top-stories-home.component.scss'],
+  selector: 'app-content-home',
+  templateUrl: './content-home.component.html',
+  styleUrls: ['./content-home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopStoriesHomeComponent implements OnInit{
+export class ContentHomeComponent implements OnInit{
   constructor(private activatedRoute: ActivatedRoute, private functionalities: FunctionalitiesListService) {
   }
 

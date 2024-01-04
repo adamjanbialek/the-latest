@@ -7,12 +7,12 @@ import {Observable} from "rxjs";
 /* content item's individual component displayed after it its chosen in the list of content items */
 
 @Component({
-  selector: 'app-individual-story',
-  templateUrl: './individual-story.component.html',
-  styleUrls: ['./individual-story.component.scss'],
+  selector: 'app-content-item',
+  templateUrl: './content-item.component.html',
+  styleUrls: ['./content-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IndividualStoryComponent implements OnInit {
+export class ContentItemComponent implements OnInit {
   constructor(private dataService: ContentDataService, private activatedRoute: ActivatedRoute) {
   }
 

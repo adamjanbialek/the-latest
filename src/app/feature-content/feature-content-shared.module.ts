@@ -3,9 +3,6 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {CoreModule} from "../core/core.module";
 import {SharedModule} from "../shared/shared.module";
-import {TopStoriesHomeComponent} from "./components/top-stories-home/top-stories-home.component";
-import { TopStoriesComponent } from './components/top-stories/top-stories.component';
-import { IndividualStoryComponent } from './components/individual-story/individual-story.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {UserReactionsFormComponent} from "./components/user-reactions-form/user-reactions-form.component";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -18,12 +15,15 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
 import {ContentDataService} from "./services/content-data.service";
 import {FeatureContentSharedRoutingModule} from "./feature-content-shared-routing.module";
+import {ContentItemComponent} from "./components/individual-story/content-item.component";
+import {ContentHomeComponent} from "./components/top-stories-home/content-home.component";
+import {ContentListComponent} from "./components/top-stories/content-list.component";
 
 @NgModule({
   declarations: [
-    TopStoriesHomeComponent,
-    TopStoriesComponent,
-    IndividualStoryComponent,
+    ContentHomeComponent,
+    ContentListComponent,
+    ContentItemComponent,
     UserReactionsFormComponent
   ],
   imports: [

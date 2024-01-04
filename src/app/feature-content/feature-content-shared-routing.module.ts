@@ -1,14 +1,14 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {TopStoriesHomeComponent} from "./components/top-stories-home/top-stories-home.component";
-import {TopStoriesComponent} from "./components/top-stories/top-stories.component";
-import {IndividualStoryComponent} from "./components/individual-story/individual-story.component";
+import {ContentHomeComponent} from "./components/top-stories-home/content-home.component";
+import {ContentListComponent} from "./components/top-stories/content-list.component";
+import {ContentItemComponent} from "./components/individual-story/content-item.component";
 
 const appRoutes: Routes = [
-  {path: '', component: TopStoriesHomeComponent,
+  {path: '', component: ContentHomeComponent,
     children: [
-      {path: '', component: TopStoriesComponent, },
-      {path: ':id', component: IndividualStoryComponent }
+      {path: '', component: ContentListComponent, },
+      {path: ':id', component: ContentItemComponent }
     ]
   },
 ]

@@ -7,12 +7,12 @@ import {Observable} from "rxjs";
 /* component that outputs all the items being stored in array to the screen */
 
 @Component({
-  selector: 'app-top-stories',
-  templateUrl: './top-stories.component.html',
-  styleUrls: ['./top-stories.component.scss'],
+  selector: 'app-content-list',
+  templateUrl: './content-list.component.html',
+  styleUrls: ['./content-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TopStoriesComponent implements OnInit {
+export class ContentListComponent implements OnInit {
   constructor(public dataService: ContentDataService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
