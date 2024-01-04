@@ -8,9 +8,8 @@ import {
   YourThoughtsDefault
 } from "../../../core/variables/variables";
 import {ContentDataService} from "../../services/content-data.service";
-import {REQUEST_SERVICE_IMPL} from "../../../feature-articles/services/requests-service-impl.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {RequestsService} from "../../interfaces/requests-service.interface";
+import {REQUEST_SERVICE_IMPL, RequestsService} from "../../interfaces/requests-service.interface";
 
 @Component({
   selector: 'app-user-reactions-form',

@@ -7,15 +7,13 @@ import {RequestsService} from "../../feature-content/interfaces/requests-service
 import {Content} from "../../feature-content/models/content.model";
 import {environment} from "../../../environments/environment";
 
-export const REQUEST_SERVICE_IMPL = new InjectionToken<RequestsService>('RequestsService');
-
 export class Article extends Content {}
 
 /* Implementation of service based on interface that is part of the feature-content module.
 It downloads the data, converts it to desired form, posts data to Firebase and outputs the array that is being stored in
 Firebase in console. This implementation is made for Article functionality. */
 @Injectable()
-export class RequestsServiceImpl implements RequestsService {
+export class ArticlesRequestsServiceImpl implements RequestsService {
   constructor(private http: HttpClient) {
   }
 
