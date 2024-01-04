@@ -1,6 +1,6 @@
-Opis dla wersji 0.8.0:
+Opis dla wersji 0.9.0:
 
-Aplikacja jest podzielona na moduły - App, AppRouting, Core, Shared, FeatureContent, FeatureContentRouting.
+Aplikacja jest podzielona na moduły - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting i FeatureArticles.
 
 W AppModule mamy 2 komponenty - AppComponent i HomeComponent, importuje on moduły Core i Shared, a także AppRoutingModule, 
 w którym jest ustawiony lazy loading dla modułu FeatureContentModule.
@@ -12,30 +12,29 @@ literalnymi.
 
 W SharedModule jest przechowywany komponent NavBaru i importowane są dwa moduły będące częściami Angular Material wykorzystywane w NavBarze.
 
-Po wybraniu funkcjonaloności w HomeComponent przechodzimy do lazy loadowanego modułu FeatureContent, który jest "sercem aplikacji". Tam w 
-ContentDataService przechowywany jest wynik GET requestu. Komponenty sprawdzają wartość zawartego tam arrayu i wywołują request tylko wtedy, 
-kiedy array w ContentDataService jest pusty. Kiedy przejdziemy z komponentu TopStories na IndividualStories otwiera się strona z podstawowymi 
-danymi na temat artykułu. Mamy możliwość wypełnienia formularza UserReactionsForm, który po kliknięciu wysyła wartość formularza do bazy w 
-Firebase.
+Po wybraniu funkcjonaloności w HomeComponent przechodzimy do lazy loadowanego modułu FeatureArticles, który z kolei importuje moduł 
+FeatureContentShared, który jest "sercem aplikacji". Tam w ContentDataService przechowywany jest wynik GET requestu. Komponenty sprawdzają 
+wartość zawartego tam arrayu i wywołują request tylko wtedy, kiedy array w ContentDataService jest pusty. Kiedy przejdziemy z komponentu 
+ContentList na ContentItem otwiera się strona z podstawowymi danymi na temat artykułu. Mamy możliwość wypełnienia formularza 
+UserReactionsForm, który po kliknięciu wysyła wartość formularza do bazy w Firebase.
 
 Zaraz po wysyłaniu danych, uruchamia się request GET pobierający wszystkie posty z bazy i printujący je w konsoli. Wyobrażam sobie, 
 że można byłoby stworzyć moduł zawierające wszystkie reakcje użytkowników na temat artykułu. Na tą chwilę to printowanie tych danych nie 
 spełnia żadnej roli poza pokazywaniem tego, że requesty działają poprawnie.
 
-Cały moduł FeatureContent działa abstrakcyjnie, wystarczyłoby wstrzyknąć z użyciem InjectionTokena realną implementacje serwisu opartego 
-na interfejsie RequestsService i stworzyć plik modułu wykorzystującgoe te same komponenty, co FeatureContentModule, żeby dodać kolejną 
-funkcjonalność do aplikacji.
+Cały moduł FeatureContentShared działa abstrakcyjnie, jest importowany przez moduł FeatureArticles wstrzykuję z użyciem InjectionTokena 
+realną implementacje serwisu opartego na interfejsie RequestsService wykorzystywany w FeatureContentSharedModule. Wystarczyłoby stworzyć 
+plik modułu importującego FeatureContentSharedModule, dodać nowe ścieżki do AppRoutingModule i stworzyć nowy serwis konwertujący dane na 
+wzór ArticlesRequestsServiceImpl, żeby stworzyć kolejną funkcjonalność do aplikacji.
 
-W projekcie wykorzystałem strukture scssu 7-1, co prawda subfolderów jest tylko 5, ale to wynika ze skali projektu. Korzystałem ze zmiennych
-scssowych, jeśli chodzi o breakpointy i kolory- zadbałem o responsywność w przedziale okolo 320 do 1920. Stworzyłem też customowy motyw dla
-Angular Material.
+W projekcie wykorzystałem strukture scssu 7-1, co prawda subfolderów jest tylko 5, ale to wynika ze skali projektu. Korzystałem ze 
+zmiennych scssowych, jeśli chodzi o breakpointy i kolory- zadbałem o responsywność w przedziale okolo 320 do 1920. Stworzyłem też customowy 
+motyw dla Angular Material.
 
 Można byłoby zaimplementować mechanizm autentyfikacji użytkownika, co za tym idzie wykorzystać CanActivate, CanActivateChild, czy 
 CanDeactivate, a także AutoLogin, AutoLogoff na podstawie tokena. W Firebase też jest oczywiście umożliwiana zapisywania i odczytywania 
 tylko przez zalogowanych użytkowników. Wykorzystałbym w tym celu Interceptory, gdzie dodałbym header request z odpowiednią wartością.
-
-Zmodyfikowałem komponent FeatureTopStoriesComponent tak, żeby działał abstrakcyjnie i w obecnej chwili byłby obsłużyć wszystkie 4 
-funkcjonalności. Z innych rzeczy przydałaby się implementacja planszy, która by przesłaniała formularz po jego wypełnieniu z podziękowaniem.
+Z innych rzeczy przydałaby się implementacja planszy, która by przesłaniała formularz po jego wypełnieniu z podziękowaniem.
 
 
 # TheLatest
