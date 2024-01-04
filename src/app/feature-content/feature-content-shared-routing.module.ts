@@ -1,8 +1,8 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {ContentHomeComponent} from "./components/top-stories-home/content-home.component";
-import {ContentListComponent} from "./components/top-stories/content-list.component";
-import {ContentItemComponent} from "./components/individual-story/content-item.component";
+import {ContentHomeComponent} from "./components/content-home/content-home.component";
+import {ContentListComponent} from "./components/content-list/content-list.component";
+import {ContentItemComponent} from "./components/content-item/content-item.component";
 
 const appRoutes: Routes = [
   {path: '', component: ContentHomeComponent,

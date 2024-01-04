@@ -15,9 +15,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
 import {ContentDataService} from "./services/content-data.service";
 import {FeatureContentSharedRoutingModule} from "./feature-content-shared-routing.module";
-import {ContentItemComponent} from "./components/individual-story/content-item.component";
-import {ContentHomeComponent} from "./components/top-stories-home/content-home.component";
-import {ContentListComponent} from "./components/top-stories/content-list.component";
+import {ContentItemComponent} from "./components/content-item/content-item.component";
+import {ContentHomeComponent} from "./components/content-home/content-home.component";
+import {ContentListComponent} from "./components/content-list/content-list.component";
 
 @NgModule({
   declarations: [
