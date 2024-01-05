@@ -20,6 +20,16 @@ nav {
   color: $white-primary;
 }
 
+mat-spinner {
+  width: 100px;
+  height: 100px;
+  position: absolute !important;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
 @media (max-width: $_small-tablet) {
   nav {
     .nav-content {

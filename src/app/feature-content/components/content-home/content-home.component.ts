@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit,} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {FunctionalitiesListService} from "../../../core/services/functionalities-list.service";
+import {ContentDataService} from "../../services/content-data.service";
 
 /* container component of the selected functionality */
 
@@ -11,7 +12,7 @@ import {FunctionalitiesListService} from "../../../core/services/functionalities
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentHomeComponent implements OnInit{
-  constructor(private activatedRoute: ActivatedRoute, private functionalities: FunctionalitiesListService) {
+  constructor(public dataService: ContentDataService, private activatedRoute: ActivatedRoute, private functionalities: FunctionalitiesListService) {
   }
 
   ngOnInit() {

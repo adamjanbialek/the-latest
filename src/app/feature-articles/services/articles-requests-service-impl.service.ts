@@ -1,6 +1,6 @@
 import {HttpClient} from "@angular/common/http";
-import {Injectable, InjectionToken} from "@angular/core";
-import {map, Observable} from "rxjs";
+import {Injectable} from "@angular/core";
+import {delay, map, Observable} from "rxjs";
 import {UserReaction} from "../../feature-content/models/user-reaction.model";
 import {IContent} from "../../feature-content/models/icontent.model";
 import {RequestsService} from "../../feature-content/interfaces/requests-service.interface";
@@ -62,7 +62,8 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
 
   /* method that downloads the data */
   getContentData(url: string): Observable<any> {
-    return this.http.get<{}>(url).pipe(map(this.getArticles));
+    /* delay() is used in order to make the loading spinner visible for a longer time  */
+    return this.http.get<{}>(url).pipe(delay(1000),map(this.getArticles));
   }
 
   /* method that posts an UserReaction object to FireBase */
