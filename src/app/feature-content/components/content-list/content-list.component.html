@@ -2,9 +2,14 @@
   <mat-spinner *ngIf="!(loaded$ | async) as loaded"></mat-spinner>
   <h1>{{functionality | capitalize}}</h1>
   <div class="articles-container" *ngIf="(loaded$ | async) as loaded">
-    <a class="tile button" *ngFor="let contentItem of loaded; let i = index" (click)="toContentItem(i)">
-      <img src="{{contentItem.image}}">
-      <h3 class="tile-title">{{contentItem.title}}</h3>
+    <a class="tile button" *ngFor="let contentItem of loaded; let i = index" [ngClass]="i < 6 ? 'article-'+(i+1) : ''" (click)="toContentItem(i)">
+      <div class="tile-subcontainer tile-subcontainer--photo">
+        <img src="{{contentItem.image}}">
+      </div>
+      <div class="tile-subcontainer">
+        <h3 class="tile-title">{{contentItem.title}}</h3>
+        <p class="tile-desc">{{contentItem.abstract | shorten }}</p>
+      </div>
     </a>
   </div>
 </section>
