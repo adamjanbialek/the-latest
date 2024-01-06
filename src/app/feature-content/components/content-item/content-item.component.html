@@ -1,15 +1,14 @@
-<mat-spinner *ngIf="!(loaded$ | async) as loaded"></mat-spinner>
-<section *ngIf="(loaded$ | async) as loaded">
-  <h1>{{loaded[id].title}}</h1>
-  <a class="button button--primary" href="{{loaded[id].link}}" target="_blank">Read more</a>
+<section *ngIf="data">
+  <h1>{{data[id].title}}</h1>
+  <a class="button button--primary" href="{{data[id].link}}" target="_blank">Read more</a>
   <div class="content-container">
     <div class="article-content">
       <p class="abstract">
-        {{loaded[id].abstract}}
+        {{data[id].abstract}}
       </p>
-      <img src="{{loaded[id].image}}">
+      <img src="{{data[id].image}}">
     </div>
 
-    <app-user-reactions-form [selectedContentItem]="loaded[id]"></app-user-reactions-form>
+    <app-user-reactions-form [selectedContentItem]="data[id]"></app-user-reactions-form>
   </div>
 </section>

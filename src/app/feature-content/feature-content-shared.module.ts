@@ -18,13 +18,17 @@ import {FeatureContentSharedRoutingModule} from "./feature-content-shared-routin
 import {ContentItemComponent} from "./components/content-item/content-item.component";
 import {ContentHomeComponent} from "./components/content-home/content-home.component";
 import {ContentListComponent} from "./components/content-list/content-list.component";
+import { OpinionOutputComponent } from './components/opinion-output/opinion-output.component';
+import { ContentItemContainerComponent } from './components/content-item-container/content-item-container.component';
 
 @NgModule({
   declarations: [
     ContentHomeComponent,
     ContentListComponent,
     ContentItemComponent,
-    UserReactionsFormComponent
+    UserReactionsFormComponent,
+    OpinionOutputComponent,
+    ContentItemContainerComponent
   ],
   imports: [
     CommonModule,

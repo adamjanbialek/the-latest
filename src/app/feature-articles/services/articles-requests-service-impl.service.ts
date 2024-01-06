@@ -21,7 +21,9 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
 
   /* method outputting an array of UserReaction objects to console */
   getFromFirebase() {
-    return this.http.get(this.reactionsUrl).subscribe({
+    return this.http.get(this.reactionsUrl).pipe(map(data => {
+      return Object.values(data);
+    })).subscribe({
       next: res => console.log(res),
     })
   }
@@ -56,7 +58,7 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
         }
       }
     }
-
+    console.log(articlesArray);
     return articlesArray;
   }
 
