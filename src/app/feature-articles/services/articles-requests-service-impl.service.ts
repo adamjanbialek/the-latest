@@ -27,12 +27,13 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
   }
 
   /* method that converts the response to array of Article objects */
-  getArticles(res: {[key: string]: unknown}): Article[] {
+  getArticles(res: {[key: string]: unknown}, pageNumber?: number, pageSize?: number): Article[] {
     let articlesArray: Article[] = [];
 
     if (Array.isArray(res['results'])) {
-      for (const resItem in res['results']) {
-        let articleObject: {[key: string]: unknown} = res['results'][resItem];
+      const sizeOfPage = pageSize ?? res['results'].length;
+      for (let i = 0; i < sizeOfPage; i++) {
+        let articleObject: {[key: string]: unknown} = res['results'][i];
 
         if (
           articleObject['title'] &&
@@ -61,9 +62,9 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
   }
 
   /* method that downloads the data */
-  getContentData(url: string): Observable<any> {
+  getContentData(url: string, pageSize?: number, pageNumber?: number): Observable<any> {
     /* delay() is used in order to make the loading spinner visible for a longer time  */
-    return this.http.get<{}>(url).pipe(delay(1000),map(this.getArticles));
+    return this.http.get<{}>(url).pipe(delay(1000),map(data => this.getArticles(data, pageSize, pageNumber)));
   }
 
   /* method that posts an UserReaction object to FireBase */

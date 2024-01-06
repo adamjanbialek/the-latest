@@ -10,9 +10,7 @@ export interface RequestsService {
 
   getFromFirebase(): any;
 
-  getArticles(res: any): any;
-
-  getContentData(url: string): Observable<any>;
+  getContentData(url: string, pageSize?: number, pageNumber?: number): Observable<any>;
 
   postRequest(content: IContent, userReaction: UserReaction): any;
 }

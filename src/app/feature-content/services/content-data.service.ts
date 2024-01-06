@@ -17,19 +17,19 @@ export class ContentDataService {
   loaded$!: Observable<IContent[]>;
 
   /* a method that checks if data has been downloaded already and if not then it runs a method that downloads the data */
-  passLoadedData() {
+  passLoadedData(pageSize?: number, pageNumber?: number) {
     if(!this.isLoaded) {
-      return this.getContentIfArrayIsEmpty();
+      return this.getContentIfArrayIsEmpty(pageSize, pageNumber);
     } else {
       return this.loaded$;
     }
   }
 
   /* a method that downloads the requested data */
-  getContentIfArrayIsEmpty() {
+  getContentIfArrayIsEmpty(pageSize?: number, pageNumber?: number) {
     return this.loaded$ = this.requestsService.
     getContentData(
-      this.functionalities.selectFunctionality(this.functionalities.selectedFunctionality)?.dataUrl!
+      this.functionalities.selectFunctionality(this.functionalities.selectedFunctionality)?.dataUrl!, pageSize, pageNumber
     ).
     pipe(
       shareReplay(1),

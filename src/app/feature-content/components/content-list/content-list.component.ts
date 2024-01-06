@@ -1,8 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
 import {ContentDataService} from "../../services/content-data.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {IContent} from "../../models/icontent.model";
 import {Observable} from "rxjs";
+import {MatPaginator} from "@angular/material/paginator";
 
 /* component that outputs all the items being stored in array to the screen */
 
@@ -20,9 +21,12 @@ export class ContentListComponent implements OnInit {
   functionality = this.activatedRoute.snapshot.data['functionality'];
   loaded$!: Observable<IContent[]>;
 
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
   ngOnInit() {
     /* loads the data through a service */
-    this.loaded$ = this.dataService.passLoadedData();
+    this.loaded$ = this.dataService.passLoadedData(9);
   }
 
   /* a method that redirects to one of the items individual pages */

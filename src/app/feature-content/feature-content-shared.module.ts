@@ -18,6 +18,7 @@ import {FeatureContentSharedRoutingModule} from "./feature-content-shared-routin
 import {ContentItemComponent} from "./components/content-item/content-item.component";
 import {ContentHomeComponent} from "./components/content-home/content-home.component";
 import {ContentListComponent} from "./components/content-list/content-list.component";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {ContentListComponent} from "./components/content-list/content-list.compo
     MatOptionModule,
     MatRadioModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    MatPaginatorModule
   ],
   exports: [
   ],
