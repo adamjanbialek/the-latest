@@ -8,7 +8,7 @@ export const REQUEST_SERVICE_IMPL = new InjectionToken<RequestsService>('Request
 export interface RequestsService {
   reactionsUrl: string;
 
-  getFromFirebase(): any;
+  getFromFirebase(number: number): any;
 
   getContentData(url: string): Observable<any>;
 

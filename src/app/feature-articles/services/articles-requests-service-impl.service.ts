@@ -7,7 +7,12 @@ import {RequestsService} from "../../feature-content/interfaces/requests-service
 import {Content} from "../../feature-content/models/content.model";
 import {environment} from "../../../environments/environment";
 
-export class Article extends Content {}
+export class Article extends Content {
+  constructor(title: string, link: string, abstract: string, image: string, public uri: string) {
+    super(title, link, abstract, image);
+    this.uri = uri;
+  }
+}
 
 /* Implementation of service based on interface that is part of the feature-content module.
 It downloads the data, converts it to desired form, posts data to Firebase and outputs the array that is being stored in
@@ -20,12 +25,11 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
   reactionsUrl = environment.reactionsUrl;
 
   /* method outputting an array of UserReaction objects to console */
-  getFromFirebase() {
+  /*TODO:*/
+  getFromFirebase(id: number) {
     return this.http.get(this.reactionsUrl).pipe(map(data => {
-      return Object.values(data);
-    })).subscribe({
-      next: res => console.log(res),
-    })
+      return [Object.values(data)[id]];
+    }))
   }
 
   /* method that converts the response to array of Article objects */
@@ -45,13 +49,15 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
           if (
             typeof articleObject['title'] === 'string' &&
             typeof articleObject['abstract'] === 'string' &&
-            typeof articleObject['url'] === 'string'
+            typeof articleObject['url'] === 'string' &&
+            typeof articleObject['uri'] === 'string'
           ) {
             let article: Article = {
               title: articleObject['title'],
               abstract: articleObject['abstract'],
               link: articleObject['url'],
               image: img,
+              uri: articleObject['uri']
             };
             articlesArray.push(article);
           }

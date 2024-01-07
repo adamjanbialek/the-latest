@@ -1,6 +1,24 @@
 <section *ngIf="data">
-  <h2>The last opinions on this article:</h2>
-  <p>{{data[id].title}}</p>
-  <h2>The last opinions on you may find interesting:</h2>
-  <p>{{data[id].title}}</p>
+  <div class="opinion-section">
+    <h2>The lastest opinions on this article:</h2>
+    <div>
+      <div *ngFor="let dataItem of data" class="opinion-container">
+        <p>{{dataItem[1].yourThoughts}}</p>
+        <span>{{dataItem[1].username}}</span>
+      </div>
+      <div *ngFor="let dataItem of data" class="opinion-container">
+        <p>{{dataItem[1].yourThoughts}}</p>
+        <span>{{dataItem[1].username}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="opinion-section">
+    <h2>The lastest 3 opinions on news you may find interesting:</h2>
+    <div>
+      <div *ngFor="let dataItem of data" class="opinion-container">
+        <p>{{dataItem[1].yourThoughts}}</p>
+        <span>{{dataItem[1].username}}</span>
+      </div>
+    </div>
+  </div>
 </section>

@@ -21,6 +21,6 @@ export class ContentItemContainerComponent {
   ngOnInit() {
     /* loads the data through a service */
     this.loaded$ = this.dataService.passLoadedData();
-    this.reactions$ = this.requestService.getFromFirebase();
+    this.reactions$ = this.requestService.getFromFirebase(this.id);
   }
 }

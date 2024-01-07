@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {IContent} from "../../models/icontent.model";
 
 /* content item's individual component displayed after it its chosen in the list of content items */
 
@@ -13,7 +12,7 @@ import {IContent} from "../../models/icontent.model";
 export class ContentItemComponent {
   constructor(private activatedRoute: ActivatedRoute) {}
 
-  @Input() data!: IContent[] | null;
+  @Input() data!: any;
 
   id = this.activatedRoute.snapshot.params['id'];
 }

@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {IContent} from "../../models/icontent.model";
 
 @Component({
   selector: 'app-opinion-output',
@@ -10,7 +9,7 @@ import {IContent} from "../../models/icontent.model";
 export class OpinionOutputComponent {
   constructor(private activatedRoute: ActivatedRoute) {}
 
-  @Input() data!: IContent[] | null;
+  @Input() data!: any;
 
   id = this.activatedRoute.snapshot.params['id'];
 }
