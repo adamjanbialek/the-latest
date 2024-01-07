@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {ContentDataService} from "../../services/content-data.service";
 import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {IContent} from "../../models/icontent.model";
 import {REQUEST_SERVICE_IMPL, RequestsService} from "../../interfaces/requests-service.interface";
 
@@ -20,7 +20,10 @@ export class ContentItemContainerComponent {
 
   ngOnInit() {
     /* loads the data through a service */
-    this.loaded$ = this.dataService.passLoadedData();
-    this.reactions$ = this.requestService.getFromFirebase(this.id);
+    this.loaded$ = this.dataService.passLoadedData().pipe(tap(
+      data => {
+        this.reactions$ = this.requestService.getUserReactions(this.id, data)
+      }
+    ));
   }
 }

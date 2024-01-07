@@ -26,9 +26,19 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
 
   /* method outputting an array of UserReaction objects to console */
   /*TODO:*/
-  getFromFirebase(id: number) {
+  getUserReactions(id: number, content: Article[]) {
     return this.http.get(this.reactionsUrl).pipe(map(data => {
-      return [Object.values(data)[id]];
+      const reactions = Object.values(data);
+      const matchedReactions = [];
+      const unmatchedReactions = []
+      for (const reaction of reactions) {
+        if(reaction[0]['uri'] === content[id]['uri']) {
+          matchedReactions.push(reaction);
+        } else if(unmatchedReactions.length < 3) {
+          unmatchedReactions.push(reaction);
+        }
+      }
+      return [matchedReactions, unmatchedReactions];
     }))
   }
 
@@ -64,7 +74,7 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
         }
       }
     }
-    console.log(articlesArray);
+
     return articlesArray;
   }
 
