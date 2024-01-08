@@ -1,3 +1,52 @@
+// ENGLISH VERSION(POLISH BELOW):
+
+Description for version 0.9.4:
+
+The application is divided into modules - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting, and FeatureArticles.
+
+In the AppModule, we have 2 components - AppComponent and HomeComponent. It imports the Core and Shared modules, as well as AppRoutingModule, 
+where lazy loading is set up for the FeatureContentModule.
+
+The Core Module holds services, models, pipes, and variables that can potentially be used throughout the application. Concerning variables, it 
+stores variable values to avoid unnecessary modifications of .html and .ts component files if there's a need to modify values such as strings. 
+This separation ensures that these files contain only logic and remain distinct from literal values.
+
+SharedModule stores the NavBar component, and two modules from Angular Material used in the NavBar are imported.
+
+Upon selecting functionality in HomeComponent, we navigate to the lazily loaded FeatureArticles module, which in turn imports the 
+FeatureContentShared module, considered the 'heart of the application'. The ContentDataService there stores the result of a GET request. 
+Components check the value of the array stored there and only make a request when the array in ContentDataService is empty. In the 
+ContentList component we can choose to enter one of the ContentItemContainer(acting as a parent for ContentItem and OpinionOutput components) 
+that are visible. That opens a page with basic article data. Users can fill out the UserReactionsForm (a child of the ContentItem component), 
+which upon clicking sends the form's value to the Firebase database. User-added opinions are displayed at the bottom in the 
+OpinionOutputComponent, divided into two parts: the first shows opinions about the current article, while the second displays three opinions 
+about other articles. There's currently a missing feature that would automatically displayed the added opinion immediately after filling out 
+the form; currently, a page refresh is needed to see it, but this functionality will soon be implemented.
+
+The entire FeatureContentShared module works abstractly and is imported by the FeatureArticles module, which injects the real implementation of 
+the service based on the RequestsService interface using an InjectionToken in the FeatureContentSharedModule. To create additional functionality 
+for the application, it suffices to create a module file that imports the FeatureContentSharedModule, add new paths to AppRoutingModule, and 
+create a new service that converts data in the manner of ArticlesRequestsServiceImpl.
+
+In the project, I used the SCSS 7-1 structure; although there are only 5 subfolders, it is due to the project's scale. I utilized SCSS variables 
+for breakpoints and colors, ensuring responsiveness from approximately 320 to 1920. I also created a custom theme for Angular Material.
+
+Future plans include:
+
+1. Adding pagination to ContentList.
+2. Implementing a solution that automatically displays the added opinion immediately after filling out the form.
+3. Missing UI elements:
+a) A sticky navbar that hides when the user scrolls down and reappears when the user scrolls up.
+b) Implementing a back button.
+c) After filling out the form in an article, displaying a panel thanking the user instead of resetting the form.
+
+One could also implement a user authentication mechanism, consequently utilizing CanActivate, CanActivateChild, or CanDeactivate, as well as 
+AutoLogin and AutoLogoff features based on the token. In Firebase, writing and reading would, of course, be restricted to logged-in users only. 
+For this purpose, I would utilize Interceptors, where I would add a request header with the appropriate value.
+
+
+// POLSKA WERSJA
+
 Opis dla wersji 0.9.4:
 
 Aplikacja jest podzielona na moduły - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting i FeatureArticles.
