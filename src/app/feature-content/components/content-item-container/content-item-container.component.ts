@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ContentDataService} from "../../services/content-data.service";
 import {ActivatedRoute} from "@angular/router";
 import {Observable, tap} from "rxjs";
@@ -10,7 +10,7 @@ import {REQUEST_SERVICE_IMPL, RequestsService} from "../../interfaces/requests-s
   templateUrl: './content-item-container.component.html',
   styleUrls: ['./content-item-container.component.scss']
 })
-export class ContentItemContainerComponent {
+export class ContentItemContainerComponent implements OnInit {
   constructor(private dataService: ContentDataService, @Inject(REQUEST_SERVICE_IMPL) private requestService: RequestsService, private activatedRoute: ActivatedRoute) {
   }
 
