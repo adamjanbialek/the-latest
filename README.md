@@ -1,4 +1,4 @@
-Opis dla wersji 0.9.0:
+Opis dla wersji 0.9.4:
 
 Aplikacja jest podzielona na moduły - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting i FeatureArticles.
 
@@ -15,15 +15,15 @@ W SharedModule jest przechowywany komponent NavBaru i importowane są dwa moduł
 Po wybraniu funkcjonaloności w HomeComponent przechodzimy do lazy loadowanego modułu FeatureArticles, który z kolei importuje moduł 
 FeatureContentShared, który jest "sercem aplikacji". Tam w ContentDataService przechowywany jest wynik GET requestu. Komponenty sprawdzają 
 wartość zawartego tam arrayu i wywołują request tylko wtedy, kiedy array w ContentDataService jest pusty. Kiedy przejdziemy z komponentu 
-ContentList na ContentItem otwiera się strona z podstawowymi danymi na temat artykułu. Mamy możliwość wypełnienia formularza 
-UserReactionsForm, który po kliknięciu wysyła wartość formularza do bazy w Firebase.
+ContentList na ContentItemContainer(który pełni role rodzica dla komponentów ContentItem i OpinionOutput) otwiera się strona z podstawowymi 
+danymi na temat artykułu. Mamy możliwość wypełnienia formularza UserReactionsForm(jest dzieckiem komponentu ContentItem), który po kliknięciu wysyła 
+wartość formularza do bazy w Firebase. Opinie dodane przez użytkowników są wyświetlane na dole w OpinionOutputComponent, który jest 
+podzielony na 2 części. Pierwsza wyświetla opinie nt bieżącego artykułu. Druga 3 opinie nt innych artykułów. Brakuje jeszcze rozwiązania, 
+które automatycznie wyświetlałoby dodaną opinie bezpośrednio po wypełnieniu formularza, więc obecnie, żeby ją zobaczyć trzeba odświeżyć 
+stronę. Niedługo się ono pojawi.
 
-Zaraz po wysyłaniu danych, uruchamia się request GET pobierający wszystkie posty z bazy i printujący je w konsoli. Wyobrażam sobie, 
-że można byłoby stworzyć moduł zawierające wszystkie reakcje użytkowników na temat artykułu. Na tą chwilę to printowanie tych danych nie 
-spełnia żadnej roli poza pokazywaniem tego, że requesty działają poprawnie.
-
-Cały moduł FeatureContentShared działa abstrakcyjnie, jest importowany przez moduł FeatureArticles wstrzykuję z użyciem InjectionTokena 
-realną implementacje serwisu opartego na interfejsie RequestsService wykorzystywany w FeatureContentSharedModule. Wystarczyłoby stworzyć 
+Cały moduł FeatureContentShared działa abstrakcyjnie, jest importowany przez moduł FeatureArticles, kt.ory wstrzykuję z użyciem InjectionTokena 
+realną implementacje serwisu opartego na interfejsie RequestsService wykorzystywany w FeatureContentSharedModule. Wystarczy stworzyć 
 plik modułu importującego FeatureContentSharedModule, dodać nowe ścieżki do AppRoutingModule i stworzyć nowy serwis konwertujący dane na 
 wzór ArticlesRequestsServiceImpl, żeby stworzyć kolejną funkcjonalność do aplikacji.
 
@@ -31,10 +31,18 @@ W projekcie wykorzystałem strukture scssu 7-1, co prawda subfolderów jest tylk
 zmiennych scssowych, jeśli chodzi o breakpointy i kolory- zadbałem o responsywność w przedziale okolo 320 do 1920. Stworzyłem też customowy 
 motyw dla Angular Material.
 
-Można byłoby zaimplementować mechanizm autentyfikacji użytkownika, co za tym idzie wykorzystać CanActivate, CanActivateChild, czy 
+Planuję jeszcze:
+1. Dodać paginację w ContentList.
+2. Dodać rozwiązanie, które automatycznie wyświetlałoby dodaną opinie bezpośrednio po wypełnieniu formularza.
+3. Brakujące elementy z zakresu UI: 
+a) sticky navbar chowający się, gdy użytkownik scrolluje w dół i pojawiający się, gdy użytkownik scrolluje w 
+górę
+b) zaimplementować przycisk wstecz
+c) po wypełnieniu formularza w artykule wyświetlić planszę z podziękowaniem dla użytkownika zamiast zresetowanego formularza
+
+Można byłoby też zaimplementować mechanizm autentyfikacji użytkownika, co za tym idzie wykorzystać CanActivate, CanActivateChild, czy 
 CanDeactivate, a także AutoLogin, AutoLogoff na podstawie tokena. W Firebase też jest oczywiście umożliwiana zapisywania i odczytywania 
 tylko przez zalogowanych użytkowników. Wykorzystałbym w tym celu Interceptory, gdzie dodałbym header request z odpowiednią wartością.
-Z innych rzeczy przydałaby się implementacja planszy, która by przesłaniała formularz po jego wypełnieniu z podziękowaniem.
 
 
 # TheLatest
