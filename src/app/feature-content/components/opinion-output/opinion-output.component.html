@@ -1,0 +1,32 @@
+<section *ngIf="data">
+  <div class="opinion-section">
+    <h2>The lastest opinions on this article:</h2>
+    <div>
+      <ng-container *ngIf="data[0].length > 0 else noReactions">
+        <div *ngFor="let dataItem of data[0]" class="opinion-container">
+          <p>{{dataItem[1].yourThoughts}}</p>
+          <span>{{dataItem[1].username}}</span>
+        </div>
+      </ng-container>
+      <ng-template #noReactions>
+        <div class="opinion-container">
+          <p>There are no opinions on this story yet</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="opinion-section">
+    <h2>The lastest 3 opinions on news you may find interesting:</h2>
+    <div>
+      <div *ngFor="let dataItem of data[1]" class="opinion-container">
+        <p>{{dataItem[1].yourThoughts}}</p>
+        <span>{{dataItem[1].username}}</span>
+        <a href="{{dataItem[0].link}}" target="_blank">
+          <h3>
+            {{dataItem[0].title}}
+          </h3>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

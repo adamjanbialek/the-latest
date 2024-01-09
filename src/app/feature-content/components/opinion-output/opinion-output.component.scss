@@ -1,0 +1,60 @@
+@import "src/scss/main";
+
+.opinion-section {
+  margin-top: 40px;
+  background: #5465bd;
+  border-radius: 15px;
+  padding: 12px 15px;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 60px
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.opinion-container {
+  padding: 12px 15px;
+  background: lighten(#666666, 30%);
+  border-radius: 15px;
+
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 200;
+    margin-bottom: 4px;
+    line-height: 1rem;
+  }
+
+  span {
+    font-size: 13px;
+    font-weight: 100;
+    line-height: 1rem;
+  }
+}
+
+@media (max-width: $_small-tablet) {
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .opinion-section {
+    grid-template-columns: 1fr;
+  }
+
+  .opinion-container {
+    p {
+      font-size: 14px;
+    }
+
+    span {
+      font-size: 12px;
+    }
+  }
+}

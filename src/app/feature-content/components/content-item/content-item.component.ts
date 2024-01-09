@@ -1,8 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {ContentDataService} from "../../services/content-data.service";
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {IContent} from "../../models/icontent.model";
-import {Observable} from "rxjs";
 
 /* content item's individual component displayed after it its chosen in the list of content items */
 
@@ -12,15 +9,10 @@ import {Observable} from "rxjs";
   styleUrls: ['./content-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContentItemComponent implements OnInit {
-  constructor(private dataService: ContentDataService, private activatedRoute: ActivatedRoute) {
-  }
+export class ContentItemComponent {
+  constructor(private activatedRoute: ActivatedRoute) {}
+
+  @Input() data!: any;
 
   id = this.activatedRoute.snapshot.params['id'];
-  loaded$!: Observable<IContent[]>;
-
-  ngOnInit() {
-    /* loads the data through a service */
-    this.loaded$ = this.dataService.passLoadedData();
-  }
 }

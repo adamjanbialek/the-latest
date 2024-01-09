@@ -54,7 +54,6 @@ export class UserReactionsFormComponent {
       complete: () => {
         /* after posting the values from the userReactionForm all the results stored in the Firebase database
         are outputted to console */
-        this.requestsService.getFromFirebase();
         this.userReactionForm.reset();
       }
     });
