@@ -10,7 +10,7 @@ export interface RequestsService {
 
   getUserReactions(number?: number, content?: IContent[]): any;
 
-  getContentData(url: string, pageSize?: number, pageNumber?: number): Observable<any>;
+  getContentData(url: string): Observable<any>;
 
   postRequest(content: IContent, userReaction: UserReaction): any;
 }

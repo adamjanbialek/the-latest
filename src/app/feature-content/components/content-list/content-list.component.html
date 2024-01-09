@@ -1,8 +1,14 @@
 <section>
-  <mat-paginator pageSize="9"></mat-paginator>
-  <h1>{{functionality | capitalize}}</h1>
+  <h1>
+    {{functionality | capitalize}}
+    <mat-paginator [pageSize]="paginationOptions.pageSize"
+                   [pageSizeOptions]="paginationOptions.pageSizeOptions"
+                   [length]="paginationOptions.defaultLength">
+    </mat-paginator>
+  </h1>
   <div class="articles-container" *ngIf="(loaded$ | async) as loaded">
-    <a class="tile button" *ngFor="let contentItem of loaded; let i = index" [ngClass]="i < 6 ? 'article-'+(i+1) : ''" (click)="toContentItem(i)">
+    <a class="tile button" *ngFor="let contentItem of selectedPage; let i = index" [ngClass]="i < 6 ? 'article-'+(i+1) : ''"
+       (click)="toContentItem((paginator.pageSize * paginator.pageIndex) + i)">
       <div class="tile-subcontainer tile-subcontainer--photo">
         <img src="{{contentItem.image}}">
       </div>

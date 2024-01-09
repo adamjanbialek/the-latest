@@ -4,9 +4,8 @@
   margin-top: 20px;
   display: grid;
   gap: 20px;
-
-
 }
+
 @media (min-width: $_large-tablet) {
   .articles-container {
       grid-template-columns: repeat(3, 1fr);
@@ -29,6 +28,17 @@ a {
     height: 100%;
     object-fit: cover;
   }
+}
+
+h1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-paginator {
+  border-radius: 24px;
+  padding-left: 16px;
 }
 
 .tile {
@@ -118,6 +128,15 @@ a {
   .tile {
     width: auto;
   }
+
+  h1 {
+    flex-direction: column;
+  }
+
+  mat-paginator {
+    margin-top: 15px;
+    width: fit-content;
+  }
 }
 
 @media (max-width: $_mobile-huge) {
@@ -130,6 +149,16 @@ a {
     &--photo {
       height: 200px;
     }
+  }
+
+  mat-paginator {
+    max-width: 245px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 14px;
+    padding-right: 16px;
+    padding-left: unset;
   }
 }
 

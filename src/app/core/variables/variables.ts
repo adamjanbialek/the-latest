@@ -37,6 +37,13 @@ export const functionalitiesList: Functionality[] = [
   }
 ]
 
+/* pagination options */
+export const paginationOptions = {
+  pageSize: 9,
+  pageSizeOptions: [6,9,12],
+  defaultLength: 30
+}
+
 /* variables used in userReactionForm */
 export const UsernameDefault = 'anonymous';
 export enum DidYouReadOptions {
