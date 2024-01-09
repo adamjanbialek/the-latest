@@ -1,6 +1,6 @@
 // ENGLISH VERSION(POLISH BELOW):
 
-Description for version 0.9.4:
+Description for version 0.9.6:
 
 The application is divided into modules - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting, and FeatureArticles.
 
@@ -33,9 +33,8 @@ for breakpoints and colors, ensuring responsiveness from approximately 320 to 19
 
 Future plans include:
 
-1. Adding pagination to ContentList.
-2. Implementing a solution that automatically displays the added opinion immediately after filling out the form.
-3. Missing UI elements:
+1. Implementing a solution that automatically displays the added opinion immediately after filling out the form.
+2. Missing UI elements:
 a) A sticky navbar that hides when the user scrolls down and reappears when the user scrolls up.
 b) Implementing a back button.
 c) After filling out the form in an article, displaying a panel thanking the user instead of resetting the form.
@@ -47,7 +46,7 @@ For this purpose, I would utilize Interceptors, where I would add a request head
 
 // POLSKA WERSJA
 
-Opis dla wersji 0.9.4:
+Opis dla wersji 0.9.6:
 
 Aplikacja jest podzielona na moduły - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting i FeatureArticles.
 
@@ -81,9 +80,8 @@ zmiennych scssowych, jeśli chodzi o breakpointy i kolory- zadbałem o responsyw
 motyw dla Angular Material.
 
 Planuję jeszcze:
-1. Dodać paginację w ContentList.
-2. Dodać rozwiązanie, które automatycznie wyświetlałoby dodaną opinie bezpośrednio po wypełnieniu formularza.
-3. Brakujące elementy z zakresu UI: 
+1. Dodać rozwiązanie, które automatycznie wyświetlałoby dodaną opinie bezpośrednio po wypełnieniu formularza.
+2. Brakujące elementy z zakresu UI: 
 a) sticky navbar chowający się, gdy użytkownik scrolluje w dół i pojawiający się, gdy użytkownik scrolluje w 
 górę
 b) zaimplementować przycisk wstecz
