@@ -1,10 +1,12 @@
 .mat-typography h1, h2, h3, p, span, .button, button {
   font-family: "Lexend Deca", sans-serif;
+  color: $white-primary;
 }
 
 .mat-typography h1 {
   font-size: 32px;
   letter-spacing: 2px;
+  color: $black-primary;
 }
 
 .mat-typography h2 {

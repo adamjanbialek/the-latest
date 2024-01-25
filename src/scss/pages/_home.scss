@@ -9,8 +9,8 @@
     position: absolute;
     width: 100%;
     height: 80px;
-    background: rgba(0,0,0,.5);
-    color: white;
+    background: rgba($black-primary,.5);
+    color: $white-primary;
     display: flex;
     align-items: center;
     padding-left: 30px;
@@ -38,7 +38,7 @@
     }
 
     .tile-title {
-      background: rgba(0,0,0,.85);
+      background: rgba($black-primary,.85);
       transform: scale(1.05);
     }
   }

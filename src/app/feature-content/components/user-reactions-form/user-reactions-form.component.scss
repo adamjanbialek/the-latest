@@ -4,23 +4,16 @@ form {
   display: grid;
 }
 
-h2 {
-  color: white;
-}
-
 .questions-container {
   display: grid;
 }
 
 .radio-label {
-  color: white;
+  color: $white-primary;
 }
 
 ::ng-deep mat-radio-group {
-  color: white;
-  border-color: white;
-  * {
-    color: white;
-    border-color: white;
+  label {
+    color: $white-primary;
   }
 }
