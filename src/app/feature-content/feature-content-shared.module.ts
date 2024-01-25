@@ -10,7 +10,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOptionModule} from "@angular/material/core";
-import {MatRadioModule} from "@angular/material/radio";
+import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from "@angular/material/radio";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
 import {ContentDataService} from "./services/content-data.service";
@@ -51,7 +51,11 @@ import { ContentItemContainerComponent } from './components/content-item-contain
   exports: [
   ],
   providers: [
-    ContentDataService
+    ContentDataService,
+    {
+      provide: MAT_RADIO_DEFAULT_OPTIONS,
+      useValue: { color: 'accent' },
+    }
   ]
 })
 export class FeatureContentSharedModule { }

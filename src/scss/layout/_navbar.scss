@@ -15,6 +15,10 @@ nav {
   }
 }
 
+mat-toolbar {
+  background-image: linear-gradient(329deg, rgb(190, 166, 255) 35%, rgb(107, 4, 253) 100%) !important;
+}
+
 .the-latest-link {
   text-decoration: unset;
   color: $white-primary;

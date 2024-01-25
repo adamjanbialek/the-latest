@@ -29,12 +29,17 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
     return this.http.get(this.reactionsUrl).pipe(map(data => {
       const reactions = Object.values(data);
       const matchedReactions = [];
-      const unmatchedReactions = []
-      for (const reaction of reactions) {
-        if(reaction[0]['uri'] === content[id]['uri']) {
-          matchedReactions.push(reaction);
-        } else if(unmatchedReactions.length < 3) {
-          unmatchedReactions.push(reaction);
+      const unmatchedReactions = [];
+      for (let i = reactions.length - 1; i >= 0; i--) {
+        /* latest reactions on the current article  */
+        if(reactions[i][0]['uri'] === content[id]['uri']) {
+          matchedReactions.push(reactions[i]);
+        }
+        /* latest reactions that are not on the current article  */
+        else if(unmatchedReactions.length < 3
+          // && reactions[i][0]['uri'] !== content[id]['uri']
+        ) {
+          unmatchedReactions.push(reactions[i]);
         }
       }
       return [matchedReactions, unmatchedReactions];

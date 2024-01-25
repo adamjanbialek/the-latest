@@ -1,7 +1,26 @@
+@import "src/scss/main";
+
 form {
   display: grid;
 }
 
+h2 {
+  color: white;
+}
+
 .questions-container {
   display: grid;
+}
+
+.radio-label {
+  color: white;
+}
+
+::ng-deep mat-radio-group {
+  color: white;
+  border-color: white;
+  * {
+    color: white;
+    border-color: white;
+  }
 }
