@@ -52,7 +52,14 @@ export class UserReactionsFormComponent {
   onSubmit() {
     this.requestsService.postRequest(this.selectedContentItem, this.userReactionForm.value).subscribe({
       complete: () => {
-        this.userReactionForm.reset();
+        this.userReactionForm.setValue({
+          username: '',
+          yourThoughts: '',
+          questions: {
+            didYouRead: this.didYouReadOptionsDefaultAnswer,
+            residence: this.defaultResidence
+          }
+        });
       }
     });
   }
