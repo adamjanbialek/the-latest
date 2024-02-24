@@ -1,5 +1,13 @@
 mat-toolbar {
   background-image: linear-gradient(329deg, rgb(190, 166, 255) 35%, rgb(107, 4, 253) 100%) !important;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  transition: .2s all ease-in;
+
+  &.navbar--hide {
+    transform: translateY(-64px);
+  }
 }
 
 .the-latest-link {
@@ -11,13 +19,5 @@ mat-toolbar {
   p {
     margin-left: 10px;
     margin-bottom: 0;
-  }
-}
-
-@media (max-width: $_small-tablet) {
-  nav {
-    .nav-content {
-      padding-inline: 20px;
-    }
   }
 }

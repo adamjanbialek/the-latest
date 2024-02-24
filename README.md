@@ -1,6 +1,6 @@
 // ENGLISH VERSION(POLISH BELOW):
 
-Description for version 0.9.6:
+Description for version 0.9.8:
 
 The application is divided into modules - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting, and FeatureArticles.
 
@@ -35,9 +35,8 @@ Future plans include:
 
 1. Implementing a solution that automatically displays the added opinion immediately after filling out the form.
 2. Missing UI elements:
-a) A sticky navbar that hides when the user scrolls down and reappears when the user scrolls up.
-b) Implementing a back button.
-c) After filling out the form in an article, displaying a panel thanking the user instead of resetting the form.
+a) Implementing a back button.
+b) After filling out the form in an article, displaying a panel thanking the user instead of resetting the form.
 
 One could also implement a user authentication mechanism, consequently utilizing CanActivate, CanActivateChild, or CanDeactivate, as well as 
 AutoLogin and AutoLogoff features based on the token. In Firebase, writing and reading would, of course, be restricted to logged-in users only. 
@@ -46,7 +45,7 @@ For this purpose, I would utilize Interceptors, where I would add a request head
 
 // POLSKA WERSJA
 
-Opis dla wersji 0.9.6:
+Opis dla wersji 0.9.8:
 
 Aplikacja jest podzielona na moduły - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting i FeatureArticles.
 
@@ -81,11 +80,9 @@ motyw dla Angular Material.
 
 Planuję jeszcze:
 1. Dodać rozwiązanie, które automatycznie wyświetlałoby dodaną opinie bezpośrednio po wypełnieniu formularza.
-2. Brakujące elementy z zakresu UI: 
-a) sticky navbar chowający się, gdy użytkownik scrolluje w dół i pojawiający się, gdy użytkownik scrolluje w 
-górę
-b) zaimplementować przycisk wstecz
-c) po wypełnieniu formularza w artykule wyświetlić planszę z podziękowaniem dla użytkownika zamiast zresetowanego formularza
+2. Brakujące elementy z zakresu UI:
+a) zaimplementować przycisk wstecz
+b) po wypełnieniu formularza w artykule wyświetlić planszę z podziękowaniem dla użytkownika zamiast zresetowanego formularza
 
 Można byłoby też zaimplementować mechanizm autentyfikacji użytkownika, co za tym idzie wykorzystać CanActivate, CanActivateChild, czy 
 CanDeactivate, a także AutoLogin, AutoLogoff na podstawie tokena. W Firebase też jest oczywiście umożliwiana zapisywania i odczytywania 

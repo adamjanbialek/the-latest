@@ -8,7 +8,7 @@ import {
   YourThoughtsDefault
 } from "../../../core/variables/variables";
 import {ContentDataService} from "../../services/content-data.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {REQUEST_SERVICE_IMPL, RequestsService} from "../../interfaces/requests-service.interface";
 
 @Component({
@@ -35,7 +35,7 @@ export class UserReactionsFormComponent {
 
   /* initial values are set in userReactionForm */
   userReactionForm: FormGroup = this.formBuilder.group({
-    username:  ['', [Validators.required, Validators.minLength(6)]],
+    username:  ['', [Validators.required, Validators.minLength(6), this.notAllowedUsernames.bind(this)]],
     yourThoughts: ['', [Validators.required]],
     questions: this.formBuilder.group({
       didYouRead: this.didYouReadOptionsDefaultAnswer,
@@ -47,6 +47,13 @@ export class UserReactionsFormComponent {
     this.userReactionForm.patchValue({
       'username': UsernameDefault
     });
+  }
+
+  notAllowedUsernames(control: FormControl): {[s: string]: boolean } | null {
+    if(['iAmNotAllowed', 'iAmNotAllowedAsWell'].includes(control.value)) {
+      return {notAllowedUsernames: true}
+    }
+    return null;
   }
 
   onSubmit() {
