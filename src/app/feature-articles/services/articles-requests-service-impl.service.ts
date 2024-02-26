@@ -1,6 +1,6 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {delay, map, Observable} from "rxjs";
+import {delay, map, Observable, Subject} from "rxjs";
 import {UserReaction} from "../../feature-content/models/user-reaction.model";
 import {IContent} from "../../feature-content/models/icontent.model";
 import {RequestsService} from "../../feature-content/interfaces/requests-service.interface";
@@ -23,6 +23,14 @@ export class ArticlesRequestsServiceImpl implements RequestsService {
   }
 
   reactionsUrl = environment.reactionsUrl;
+
+  private userReactionsSubject = new Subject<void>();
+
+  public formSubmitted$ = this.userReactionsSubject.asObservable();
+
+  formSubmission() {
+    this.userReactionsSubject.next();
+  }
 
   /* method outputting an array of UserReaction objects to console */
   getUserReactions(id: number, content: Article[]) {

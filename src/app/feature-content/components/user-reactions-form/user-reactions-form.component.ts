@@ -59,6 +59,7 @@ export class UserReactionsFormComponent {
   onSubmit() {
     this.requestsService.postRequest(this.selectedContentItem, this.userReactionForm.value).subscribe({
       complete: () => {
+        this.requestsService.formSubmission();
         this.userReactionForm.setValue({
           username: '',
           yourThoughts: '',

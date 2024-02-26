@@ -8,6 +8,10 @@ export const REQUEST_SERVICE_IMPL = new InjectionToken<RequestsService>('Request
 export interface RequestsService {
   reactionsUrl: string;
 
+  formSubmission(): any;
+
+  formSubmitted$: Observable<any>;
+
   getUserReactions(number?: number, content?: IContent[]): any;
 
   getContentData(url: string): Observable<any>;
