@@ -1,6 +1,6 @@
 // ENGLISH VERSION(POLISH BELOW):
 
-Description for version 0.9.8:
+Description for version 0.9.9:
 
 The application is divided into modules - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting, and FeatureArticles.
 
@@ -31,13 +31,6 @@ create a new service that converts data in the manner of ArticlesRequestsService
 In the project, I used the SCSS 7-1 structure; although there are only 5 subfolders, it is due to the project's scale. I utilized SCSS variables 
 for breakpoints and colors, ensuring responsiveness from approximately 320 to 1920. I also created a custom theme for Angular Material.
 
-Future plans include:
-
-1. Implementing a solution that automatically displays the added opinion immediately after filling out the form.
-2. Missing UI elements:
-a) Implementing a back button.
-b) After filling out the form in an article, displaying a panel thanking the user instead of resetting the form.
-
 One could also implement a user authentication mechanism, consequently utilizing CanActivate, CanActivateChild, or CanDeactivate, as well as 
 AutoLogin and AutoLogoff features based on the token. In Firebase, writing and reading would, of course, be restricted to logged-in users only. 
 For this purpose, I would utilize Interceptors, where I would add a request header with the appropriate value.
@@ -45,7 +38,7 @@ For this purpose, I would utilize Interceptors, where I would add a request head
 
 // POLSKA WERSJA
 
-Opis dla wersji 0.9.8:
+Opis dla wersji 0.9.9:
 
 Aplikacja jest podzielona na moduły - App, AppRouting, Core, Shared, FeatureContentShared, FeatureContentSharedRouting i FeatureArticles.
 
@@ -77,12 +70,6 @@ wzór ArticlesRequestsServiceImpl, żeby stworzyć kolejną funkcjonalność do 
 W projekcie wykorzystałem strukture scssu 7-1, co prawda subfolderów jest tylko 5, ale to wynika ze skali projektu. Korzystałem ze 
 zmiennych scssowych, jeśli chodzi o breakpointy i kolory- zadbałem o responsywność w przedziale okolo 320 do 1920. Stworzyłem też customowy 
 motyw dla Angular Material.
-
-Planuję jeszcze:
-1. Dodać rozwiązanie, które automatycznie wyświetlałoby dodaną opinie bezpośrednio po wypełnieniu formularza.
-2. Brakujące elementy z zakresu UI:
-a) zaimplementować przycisk wstecz
-b) po wypełnieniu formularza w artykule wyświetlić planszę z podziękowaniem dla użytkownika zamiast zresetowanego formularza
 
 Można byłoby też zaimplementować mechanizm autentyfikacji użytkownika, co za tym idzie wykorzystać CanActivate, CanActivateChild, czy 
 CanDeactivate, a także AutoLogin, AutoLogoff na podstawie tokena. W Firebase też jest oczywiście umożliwiana zapisywania i odczytywania 
