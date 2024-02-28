@@ -33,7 +33,7 @@ export class ContentListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     /* loads the data through a service */
-    this.loaded$ = this.dataService.passLoadedData().pipe(tap(data=> {
+    this.loaded$ = this.dataService.passLoadedData()?.pipe(tap(data=> {
       if(this.paginator) {
         this.paginator.length = data.length - 1;
       }
@@ -43,10 +43,12 @@ export class ContentListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    if(this.paginator?.length) {
-      this.paginator.length = this.loadedItems?.length - 1;
-    }
-    this.paginatorPageSubscription = this.paginator.page.pipe(tap(() => this.selectedPage = this.loadPage(this.loadedItems, this.paginator.pageSize, this.paginator.pageIndex))).subscribe();
+    setTimeout(() => {
+      if(this.paginator?.length) {
+        this.paginator.length = this.loadedItems?.length - 1;
+      }
+      this.paginatorPageSubscription = this.paginator.page.pipe(tap(() => this.selectedPage = this.loadPage(this.loadedItems, this.paginator.pageSize, this.paginator.pageIndex))).subscribe();
+    })
   }
 
   loadPage(allItems: IContent[], pageSize: number, pageIndex: number): IContent[] {
@@ -63,6 +65,6 @@ export class ContentListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.paginatorPageSubscription.unsubscribe();
+    this.paginatorPageSubscription?.unsubscribe();
   }
 }
