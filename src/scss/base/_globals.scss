@@ -9,6 +9,18 @@ body {
 main {
   margin: 40px auto;
   padding: 64px 16px 0;
+
+  &:has(app-home) {
+    margin: 0;
+    padding: 64px 16px 0;
+    box-sizing: border-box;
+    height: 100vh;
+    min-height: 750px;
+    max-height: 1080px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 section, .navbar-container {
@@ -35,5 +47,13 @@ mat-spinner {
 @media (max-width: $_small-tablet) {
   main {
     padding-inline: 20px;
+
+    &:has(app-home) {
+      padding-top: 100px;
+      padding-bottom: 40px;
+      height: fit-content;
+      min-height: unset;
+      max-height: unset;
+    }
   }
 }

@@ -4,13 +4,13 @@ import {DebugElement} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {ContentDataService} from "../../services/content-data.service";
 import {ActivatedRoute} from "@angular/router";
-import {CapitalizePipe} from "../../../core/pipes/capitalize.pipe";
+import {CapitalizePipe} from "../../../shared/pipes/capitalize.pipe";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 import {By} from "@angular/platform-browser";
 import {getContentDataMockResponse} from "../../../core/variables/mock-db";
 import {of} from "rxjs";
-import {ShortenPipe} from "../../../core/pipes/shorten.pipe";
+import {ShortenPipe} from "../../../shared/pipes/shorten.pipe";
 
 describe('ContentItemList', () => {
   let fixture: ComponentFixture<ContentListComponent>,

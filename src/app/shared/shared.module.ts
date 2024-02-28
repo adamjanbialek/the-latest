@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatIconModule} from "@angular/material/icon";
-import {NavbarComponent} from "./components/navbar/navbar.component";
+import {CapitalizePipe} from "./pipes/capitalize.pipe";
+import {ShortenPipe} from "./pipes/shorten.pipe";
 
 @NgModule({
   declarations: [
-    NavbarComponent,
-  ],
-  imports: [
-    MatToolbarModule,
-    MatIconModule
+    CapitalizePipe,
+    ShortenPipe
   ],
   exports: [
-    NavbarComponent
+    CapitalizePipe,
+    ShortenPipe
   ],
-  providers: []
 })
 export class SharedModule { }

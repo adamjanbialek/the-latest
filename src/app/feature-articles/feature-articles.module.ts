@@ -4,12 +4,8 @@ import {REQUEST_SERVICE_IMPL} from "../feature-content/interfaces/requests-servi
 import {ArticlesRequestsServiceImpl} from "./services/articles-requests-service-impl.service";
 
 @NgModule({
-  declarations: [
-  ],
   imports: [
     FeatureContentSharedModule,
-  ],
-  exports: [
   ],
   providers: [
     /* concrete of a service through a use of InjectionToken based on the Request Service interface */

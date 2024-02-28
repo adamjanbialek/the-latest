@@ -48,8 +48,6 @@ import { ContentItemContainerComponent } from './components/content-item-contain
     MatDividerModule,
     MatPaginatorModule
   ],
-  exports: [
-  ],
   providers: [
     ContentDataService,
     {
