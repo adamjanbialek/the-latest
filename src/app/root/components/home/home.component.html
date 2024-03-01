@@ -1,6 +1,12 @@
 <section>
   <div class="tiles-container" >
     <div class="present-features">
+      <h1>The breaking
+        <div class="img-container">
+          <img src="assets/news3.jpg">
+        </div>
+        from around the world
+      </h1>
       <a class="tile button" *ngFor="let functionality of functionalitiesReady" (click)="goToFunctionality(functionality.url)">
         <img src="{{functionality.imageUrl}}">
         <h3 class="tile-title">{{functionality.name}}</h3>

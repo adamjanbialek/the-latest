@@ -8,7 +8,7 @@ export const functionalitiesList: Functionality[] = [
     contentType: 'articles',
     name: 'Top Stories',
     url: 'articles',
-    imageUrl: 'assets/news.jpg',
+    imageUrl: 'assets/stack.jpg',
     isReady: true
   },
   {

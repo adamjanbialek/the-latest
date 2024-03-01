@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'InterTight';
+  src: url('../../assets/fonts/InterTight-Regular.woff2') format('woff2'),
+  url('../../assets/fonts/InterTight-Regular.woff') format('woff'),
+  url('../../assets/fonts/InterTight-Regular.ttf') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'InterTight';
+  src: url('../../assets/fonts/InterTight-Medium.woff2') format('woff2'),
+  url('../../assets/fonts/InterTight-Medium.woff') format('woff'),
+  url('../../assets/fonts/InterTight-Medium.ttf') format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'InterTight';
+  src: url('../../assets/fonts/InterTight-SemiBold.woff2') format('woff2'),
+  url('../../assets/fonts/InterTight-SemiBold.woff') format('woff'),
+  url('../../assets/fonts/InterTight-SemiBold.ttf') format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TTInterphasesPro-Rg';
+  src: url('../../assets/fonts/TTInterphasesPro-Rg.otf') format("opentype"),
+  url('../../assets/fonts/TTInterphasesPro-Rg.woff') format("woff"),
+  url('../../assets/fonts/TTInterphasesPro-Rg.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'TTInterphasesPro-Md';
+  src: url('../../assets/fonts/TTInterphasesPro-Md.otf') format("opentype"),
+  url('../../assets/fonts/TTInterphasesPro-Md.woff') format("woff"),
+  url('../../assets/fonts/TTInterphasesPro-Md.woff2') format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TTInterphasesPro-DmBd';
+  src: url('../../assets/fonts/TTInterphasesPro-DmBd.otf') format("opentype"),
+  url('../../assets/fonts/TTInterphasesPro-DmBd.woff') format("woff"),
+  url('../../assets/fonts/TTInterphasesPro-DmBd.woff2') format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TTInterphasesPro-Bd';
+  src: url('../../assets/fonts/TTInterphasesPro-Bd.otf') format("opentype"),
+  url('../../assets/fonts/TTInterphasesPro-Bd.woff') format("woff"),
+  url('../../assets/fonts/TTInterphasesPro-Bd.woff2') format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}

@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: $grey-primary;
+  background-color: $black-primary;
 }
 
 main {
@@ -14,9 +14,9 @@ main {
     margin: 0;
     padding: 64px 16px 0;
     box-sizing: border-box;
-    height: 100vh;
-    min-height: 750px;
-    max-height: 1080px;
+    //height: 100vh;
+    //min-height: 750px;
+    //max-height: 1080px;
     display: flex;
     justify-content: center;
     align-items: center;
