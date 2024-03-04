@@ -8,7 +8,7 @@ export const functionalitiesList: Functionality[] = [
     contentType: 'articles',
     name: 'Top Stories using NYT API',
     url: 'articles',
-    imageUrl: 'assets/stack.jpg',
+    imageUrl: 'assets/stack3.jpg',
     isReady: true
   },
   {
