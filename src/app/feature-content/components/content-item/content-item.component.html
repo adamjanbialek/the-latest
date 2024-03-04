@@ -8,4 +8,6 @@
     </div>
   </div>
 </section>
-<app-user-reactions-form [selectedContentItem]="data?.id"></app-user-reactions-form>
+<ng-container *ngIf="data">
+  <app-user-reactions-form [selectedContentItem]="data[id]"></app-user-reactions-form>
+</ng-container>
