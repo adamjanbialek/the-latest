@@ -7,12 +7,9 @@ body {
 }
 
 main {
-  margin: 40px auto;
-  padding: 64px 16px 0;
+  padding-top: 64px;
 
   &:has(app-home) {
-    margin: 0;
-    padding: 64px 16px 64px;
     box-sizing: border-box;
     @include displayFlexAllCenter;
     min-height: 750px;
@@ -53,11 +50,7 @@ mat-spinner {
 
 @media (max-width: $_small-tablet) {
   main {
-    padding-inline: 20px;
-
     &:has(app-home) {
-      padding-top: 100px;
-      padding-bottom: 40px;
       height: fit-content;
       min-height: unset;
       max-height: unset;

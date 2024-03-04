@@ -1,5 +1,10 @@
 @import "src/scss/abstracts/variables";
 
+:host {
+  display: block;
+  padding: 40px 16px;
+}
+
 .tiles-container {
   display: block;
   width: 100%;
@@ -11,6 +16,9 @@
 .present-features, .coming-features {
   display: flex;
   gap: 25px;
+}
+
+.coming-features {
   margin-top: 70px;
 }
 
@@ -65,14 +73,6 @@ h1 {
 @media (max-width: $_small-tablet) {
   .present-features, .coming-features {
     flex-wrap: wrap;
-  }
-
-  .present-features {
-    margin-top: 0;
-  }
-
-  .tiles-container {
-    padding: 14px;
   }
 
   h1 {
