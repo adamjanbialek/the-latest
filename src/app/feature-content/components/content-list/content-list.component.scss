@@ -1,4 +1,5 @@
 @import "../../../../scss/abstracts/variables";
+@import "../../../../scss/abstracts/mixins";
 
 .articles-container {
   margin-top: 20px;
@@ -6,136 +7,64 @@
   gap: 20px;
 }
 
+section {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
 mat-paginator {
-  background: $grey-primary;
+  background: lighten($grey-primary, 22.5%);
   border-radius: 24px;
   padding-left: 16px;
 
   ::ng-deep {
     * {
-      border-color: $white-primary !important;
+      border-color: $beige !important;
+      color: $beige;
     }
 
     .mat-mdc-paginator-page-size-label, .mat-mdc-paginator-range-label {
-      color: $white-primary;
+      color: $beige;
     }
 
     svg {
-      fill: $white-primary;
+      fill: $beige;
     }
 
     .mat-mdc-icon-button[disabled] .mat-mdc-paginator-icon {
-      fill: rgba($white-primary,.25);
+      fill: rgba($beige,.25);
     }
-  }
-}
-
-a {
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 }
 
 h1 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include displayFlexCenterSpaceBetween;
 }
 
 .tile {
   margin-inline: auto;
   display: flex;
   flex-wrap: wrap;
-  //background-image: linear-gradient(180deg, $main-gradient);
   height: auto;
   grid-gap: 15px;
   padding: 15px;
   box-sizing: border-box;
-  //
-  background-color: $grey-primary;
-  //position: relative;
-  //padding: 0;
-  //border-radius: 0;
-  //
-  //&::before {
-  //  content: '';
-  //  width: 100%;
-  //  //height: 100%;
-  //  background: linear-gradient(180deg, rgba(9, 9, 13, 0) 0, #09090d 100%);
-  //}
+  background-color: lighten($grey-primary, 22.5%);
+  transition: all .2s ease-in;
 
   &:hover {
     background: lighten($grey-primary, 15%);
   }
 
-  &:hover {
-    .tile-title {
-      background: unset;
-      transform: unset;
-    }
-  }
-
   &-subcontainer {
     width: 374px;
     height: 300px;
-    //
-    //width: auto !important;
-    //&:not(.tile-subcontainer--photo) {
-    //  position: absolute;
-    //  height: 140px;
-    //  width: 100%;
-    //  bottom: 0;
-    //  padding: 10px 20px;
-    //  background: rgba(0,0,0,.5);
-    //}
-
-    h3 {
-      font-family: TTInterphasesPro-DmBd;
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 28px;
-      letter-spacing: -0.02em;
-    }
-
-    p {
-      font-family: TTInterphasesPro-Md;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
 
     &--photo {
       overflow: hidden;
       border-radius: 16px;
-      //
-      //width: 100% !important;
-      //border-radius: 0;
     }
   }
-}
-
-.tile-title {
-  font-size: 22px;
-  line-height: 1.25;
-  padding: 0;
-  height: auto;
-  position: relative;
-  background: none;
-  font-family: "Lexend Deca", sans-serif;
-  overflow: hidden;
-  align-items: flex-start;
-}
-
-.tile-desc {
-  line-height: 1.25;
-  height: auto;
-  position: relative;
-  background: none;
-  font-family: "Lexend Deca", sans-serif;
-  overflow: hidden;
-  align-items: flex-start;
-  font-size: 20px;
 }
 
 @media (min-width: $_large-tablet + 1px) {
@@ -148,52 +77,28 @@ h1 {
 @media (min-width: $_regular-tablet + 1px) {
   .article-1 {
     grid-area: 1 / 1 / 2 / 3;
-
-    &.tile{
-      //background-image: linear-gradient(-20deg, $main-gradient);
-    }
   }
 
   .article-2 {
     grid-area: 1 / 3 / 3 / 4;
-
-    &.tile{
-      //background-image: linear-gradient(73deg, $main-gradient);
-    }
   }
 
   .article-3 {
     grid-area: 2 / 1 / 3 / 3;
     flex-direction: row-reverse;
-
-    &.tile{
-      //background-image: linear-gradient(224deg, $main-gradient);
-    }
   }
 
   .article-4 {
     grid-area: 3 / 1 / 5 / 2;
-
-    &.tile{
-      //background-image: linear-gradient(-58deg, $main-gradient);
-    }
   }
 
   .article-5 {
     grid-area: 3 / 2 / 4 / 4;
     flex-direction: row-reverse;
-
-    &.tile{
-      //background-image: linear-gradient(73deg, $main-gradient);
-    }
   }
 
   .article-6 {
     grid-area: 4 / 2 / 5 / 4;
-
-    &.tile{
-      //background-image: linear-gradient(73deg, $main-gradient);
-    }
   }
 
   .article-1, .article-3, .article-5, .article-6 {

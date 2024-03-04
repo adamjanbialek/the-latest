@@ -1,14 +1,11 @@
 <section *ngIf="data">
-  <h1>{{data[id].title}}</h1>
-  <a class="button button--primary" href="{{data[id].link}}" target="_blank">Read more</a>
   <div class="content-container">
     <div class="article-content">
+      <img src="{{data[id].image}}">
       <p class="abstract">
         {{data[id].abstract}}
       </p>
-      <img src="{{data[id].image}}">
     </div>
-
-    <app-user-reactions-form [selectedContentItem]="data[id]"></app-user-reactions-form>
   </div>
 </section>
+<app-user-reactions-form [selectedContentItem]="data[id]"></app-user-reactions-form>

@@ -21,19 +21,11 @@ $custom-primary-palette: (
 );
 
 $custom-accent-palette: (
-  50: #fff494,
   100: #fceb53,
-  200: #fce517,
-  300: rgb(255, 229, 0),
-  500: #e8d002,
+  500: $beige,
   700: #a69503,
   contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: rgba(black, 0.87),
     500: rgba(black, 0.87),
-    700: white,
   )
 );
 

@@ -1,2 +1,14 @@
-<app-content-item [data]="loaded$ | async"></app-content-item>
-<app-opinion-output [data]="reactions$ | async"></app-opinion-output>
+
+  <div class="sticky-elements-container">
+    <div class="sticky-elements" *ngIf="(loaded$ | async) as loaded">
+      <h1 >{{loaded[id].title}}</h1>
+      <a target="_blank" href="{{loaded[id].link}}">
+        <button class="button button--primary button--orange-red">Read more</button>
+      </a>
+    </div>
+  </div>
+  <div class="sliding-items">
+    <app-content-item [data]="loaded$ | async"></app-content-item>
+    <app-opinion-output [data]="reactions$ | async"></app-opinion-output>
+  </div>
+

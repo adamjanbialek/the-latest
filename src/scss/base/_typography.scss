@@ -1,12 +1,11 @@
-.mat-typography h1, h2, h3, p, span, .button, button {
+.mat-typography h1, h2, .mat-typography h3, p, .button, button {
   font-family: InterTight, sans-serif;
-  color: $white-primary;
+  color: $beige;
 }
 
 .mat-typography h1 {
   font-size: 32px;
   letter-spacing: 2px;
-  color: $black-primary;
 }
 
 .mat-typography h2 {
@@ -17,8 +16,10 @@
 }
 
 .mat-typography h3 {
-  font-weight: 300;
-  letter-spacing: 1px;
+  font-weight: 700;
+  line-height: 1.25em;
+  letter-spacing: 0.065em;
+  font-size: 25px;
 }
 
 .mat-typography .button {
@@ -31,10 +32,10 @@
 }
 
 .mat-typography p {
-  font-size: 24px;
-  font-weight: 300;
-  letter-spacing: 2px;
-  line-height: 1.5rem;
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
 }
 
 @media (max-width: $_large-tablet) {

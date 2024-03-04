@@ -1,7 +1,34 @@
 @import "src/scss/main";
 
+:host {
+  display: block;
+  background: $grey-secondary;
+}
+
 form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 150px 24px;
+  box-sizing: border-box;
+  max-width: 660px;
+}
+
+h2 {
+  color: $beige;
+  font-size: 39px;
+  letter-spacing: 0.03em;
+  line-height: 1em;
+  font-weight: 500;
+}
+
+h2 + mat-form-field {
+  margin-top: 16px;
+}
+
+.button, mat-form-field {
+  height: fit-content;
 }
 
 .questions-container {
@@ -9,11 +36,19 @@ form {
 }
 
 .radio-label {
-  color: $white-primary;
+  color: $beige;
 }
 
 ::ng-deep mat-radio-group {
   label {
-    color: $white-primary;
+    color: $beige;
+  }
+}
+
+@media (max-width: $_small-tablet) {
+  form {
+    min-height: fit-content;
+    padding: 50px 24px;
+    max-width: unset;
   }
 }

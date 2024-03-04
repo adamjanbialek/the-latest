@@ -2,13 +2,18 @@
   &--primary {
     display: block;
     width: max-content;
-    padding: 10px 20px;
-    border-radius: 24px;
+    padding: 16px 32px;
+    border-radius: 32px;
+    font-size: 16px;
     background-color: lighten($black-primary, 40%);
-    color: $white-primary;
+    color: $beige;
     transition: .3s all ease-in;
     text-decoration: none;
     border: none;
+  }
+
+  &--orange-red {
+    background-color: $orange-red;
   }
 
   &:not(:disabled) {

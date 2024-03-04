@@ -1,5 +1,5 @@
 * {
-  font-family: "Lexend Deca", sans-serif;
+  font-family: InterTight, sans-serif;
 }
 
 body {
@@ -12,25 +12,24 @@ main {
 
   &:has(app-home) {
     margin: 0;
-    padding: 64px 16px 0;
+    padding: 64px 16px 64px;
     box-sizing: border-box;
-    //height: 100vh;
-    //min-height: 750px;
-    //max-height: 1080px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include displayFlexAllCenter;
+    min-height: 750px;
+    max-height: 1080px;
+    height: 100vh;
   }
 }
 
 section, .navbar-container {
   margin-inline: auto;
-  max-width: 1200px;
+  max-width: 1320px;
   width: 100%;
 }
 
 a {
   display: block;
+  text-decoration: none;
 }
 
 mat-spinner {
@@ -42,6 +41,14 @@ mat-spinner {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
+}
+
+.img-container {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: $_small-tablet) {

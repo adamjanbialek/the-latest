@@ -1,0 +1,71 @@
+@import "../../../../scss/abstracts/variables";
+
+::ng-deep main {
+  padding-inline: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+:host {
+  display: flex;
+}
+
+.sticky-elements-container {
+  width: 50%;
+  background-color: #566058;
+  color: #e5d9cf;
+
+  .sticky-elements {
+    margin-left: auto;
+    max-width: 640px;
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-inline: 16px 20px;
+  }
+}
+
+h1 {
+  font-family: "InterTight", sans-serif;
+  font-size: 60px;
+  line-height: 1em;
+  font-weight: 600;
+  color: $beige;
+}
+
+.sliding-items {
+  width: 50%;
+}
+
+@media (max-width: $_small-tablet) {
+  :host {
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .sticky-elements-container {
+    width: 100%;
+
+    .sticky-elements {
+      margin: auto;
+      max-width: 660px;
+      position: sticky;
+      top: 100%;
+      transform: unset;
+      padding: 32px 16px;
+    }
+  }
+
+  .sliding-items {
+    width: 100%;
+  }
+}
+
+@media (max-width: $_mobile-huge) {
+  ::ng-deep main {
+    padding-top: 56px;
+  }
+}

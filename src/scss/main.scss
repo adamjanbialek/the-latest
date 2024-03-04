@@ -1,4 +1,5 @@
 @import "abstracts/variables";
+@import "abstracts/mixins";
 @import "base/reset";
 @import "base/globals";
 @import "base/fonts";
@@ -6,4 +7,4 @@
 @import "themes/custom-theme";
 @import "components/buttons";
 @import "layout/navbar";
-@import "pages/home";
+@import "layout/tiles";

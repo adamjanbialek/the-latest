@@ -6,7 +6,7 @@ export const functionalitiesList: Functionality[] = [
   {
     dataUrl: `https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${environment.nytApiKey}`,
     contentType: 'articles',
-    name: 'Top Stories',
+    name: 'Top Stories using NYT API',
     url: 'articles',
     imageUrl: 'assets/stack.jpg',
     isReady: true

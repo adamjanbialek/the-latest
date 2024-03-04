@@ -35,7 +35,7 @@ export class ContentListComponent implements OnInit, AfterViewInit, OnDestroy {
     /* loads the data through a service */
     this.loaded$ = this.dataService.passLoadedData()?.pipe(tap(data=> {
       if(this.paginator) {
-        this.paginator.length = data.length - 1;
+        this.paginator.length = data.length;
       }
       this.loadedItems = data;
       this.selectedPage = this.loadPage(data, 9, 0);
@@ -45,7 +45,7 @@ export class ContentListComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     setTimeout(() => {
       if(this.paginator?.length) {
-        this.paginator.length = this.loadedItems?.length - 1;
+        this.paginator.length = this.loadedItems?.length;
       }
       this.paginatorPageSubscription = this.paginator.page.pipe(tap(() => this.selectedPage = this.loadPage(this.loadedItems, this.paginator.pageSize, this.paginator.pageIndex))).subscribe();
     })

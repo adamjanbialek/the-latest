@@ -1,5 +1,5 @@
 mat-toolbar {
-  background-image: linear-gradient(329deg, rgb(190, 166, 255) 35%, rgb(107, 4, 253) 100%) !important;
+  background-image: $navbar-gradient !important;
   z-index: 999;
   position: fixed;
   top: 0;
@@ -17,7 +17,8 @@ mat-toolbar {
   color: $white-primary;
 
   p {
-    margin-left: 10px;
     margin-bottom: 0;
+    letter-spacing: 5px;
+    font-weight: 500;
   }
 }
