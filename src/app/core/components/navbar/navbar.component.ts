@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import {MatToolbar} from "@angular/material/toolbar";
 
+/* TODO: Add a mobile navigation. Add some links to the navbar. */
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

@@ -23,7 +23,7 @@ abstractions provided by FeatureContentSharedModule.
 ## Components
 AppComponent: Main component of the application, implements Navbar and router-outlet.
 HomeComponent: Component representing the home page.
-NavbarComponent: Provides the navigation inside the app.
+NavbarComponent: Provides the navigation inside the app. No mobile-specific version at the moment.
 ContentHomeComponent: Container Component of the feature module that implements the router-outlet.
 ContentListComponent: Component that displays the list of the Content Items based on conditions set in its 
 implementation of MatPaginator.
@@ -77,6 +77,10 @@ After the installation is completed in order to run the project run the command 
 navigate to http://localhost:4200.
 You can run the tests using the command "ng test".
 
+## Ideas for future improvements:
+1. Add mobile-specific version of navigation and add some links to it.
+2. Implement authentication mechanism.
+
 ## Conclusion
 This documentation provides an overview of the application structure, components, services, routing, 
 functionality, styling approach, and potential future improvements for version 1.0.0.
@@ -103,7 +107,7 @@ FeatureContentSharedModule.
 ## Komponenty
 AppComponent: Główny komponent aplikacji.
 HomeComponent: Komponent reprezentujący stronę główną.
-NavbarComponent: Zapewnia nawigację w aplikacji.
+NavbarComponent: Zapewnia nawigację w aplikacji. W tej chwili nie posiada wersji typowo mobilnej.
 ContentHomeComponent: Komponent kontenerowy feature module, który implementuje router-outlet.
 ContentListComponent: Komponent wyświetlający listę elementów zawartości na podstawie ustawień określonych 
 w jego implementacji MatPaginator.
@@ -156,6 +160,10 @@ Po sklonowaniu repozytorium GitHub i przejściu do głównego folderu projektu n
 Po zakończeniu instalacji w celu uruchomienia projektu należy wprowadzić polecenie "ng serve", a następnie w przeglądarce przejść pod adres 
 http://localhost:4200.
 Testy można uruchomić za pomocą polecenia "ng test".
+
+## Pomysły na przyszłe ulepszenia:
+1. Stworzenie typowo mobilnej wersji nawigacji i dodanie linków do niej.
+2. Implementacja mechanizmu autentyfikacji.
 
 ## Podsumowanie
 Ta dokumentacja dostarcza przeglądu struktury aplikacji, komponentów, usług, routingu, funkcjonalności, podejścia do stylizacji oraz 
