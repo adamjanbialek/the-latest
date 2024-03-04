@@ -70,11 +70,7 @@ h1 {
   }
 }
 
-@media (max-width: $_small-tablet) {
-  .present-features, .coming-features {
-    flex-wrap: wrap;
-  }
-
+@media (max-width: $_large-tablet) {
   h1 {
     font-size: 55px;
 
@@ -82,5 +78,15 @@ h1 {
       height: 66px;
       width: 200px;
     }
+  }
+}
+
+@media (max-width: $_small-tablet) {
+  .present-features, .coming-features {
+    flex-wrap: wrap;
+  }
+
+  .coming-features {
+    margin-top: 25px;
   }
 }

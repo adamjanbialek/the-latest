@@ -50,6 +50,8 @@ mat-spinner {
 
 @media (max-width: $_small-tablet) {
   main {
+    padding-top: 56px;
+
     &:has(app-home) {
       height: fit-content;
       min-height: unset;
